@@ -160,11 +160,10 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计文档，形成初稿
 
 ### 2.3 运行环境
 
-网站预计将支持以下几种主流浏览器：
-
 ![Android](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/AndroidPic/android_logo.png)
 
 主要支持Android系统（android 5.0及以上）
+
 根据google9月份发布的android各版本的市场份额统计：
 
 ![](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/AndroidPic/android_table.png)
