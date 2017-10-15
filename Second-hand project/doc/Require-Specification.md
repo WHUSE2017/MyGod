@@ -215,7 +215,7 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计文档，形成初稿
 
 **界面框架:**
 
-![界面框架](https://raw.githubusercontent.com/buaase/Phylab-Web/master/docs/UserInterface/Index.png)
+![界面框架](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_frame.png)
 
 ### 3.2 界面首页
 
@@ -252,7 +252,7 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计文档，形成初稿
 
 1.用户可增加/删除现有订单
 
-![个人信息界面](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_person.png)
+![个人信息界面](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_person_page.png)
 
 个人信息界面功能：
 
