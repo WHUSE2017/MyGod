@@ -162,12 +162,12 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计文档，形成初稿
 
 网站预计将支持以下几种主流浏览器：
 
-![Android](http://pic.sucaibar.com/pic/201308/06/c9be13cfa9_64.png)
+![Android](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/AndroidPic/android_logo.png)
 
 主要支持Android系统（android 5.0及以上）
 根据google9月份发布的android各版本的市场份额统计：
 
-![IE浏览器](http://pic.sucaibar.com/pic/201308/06/3702ac570f_64.png)
+![](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/AndroidPic/android_table.png)
 
 ### 2.4 假定和约束
 
@@ -220,7 +220,7 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计文档，形成初稿
 ### 3.2 界面首页
 
 
-![首页](https://raw.githubusercontent.com/buaase/Phylab-Web/master/docs/UserInterface/Index.png)
+![首页](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_index_page.png)
 
 上图为我们所设计的首页预览版原型图，涉及到的按钮与功能有：
 
@@ -246,13 +246,13 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计文档，形成初稿
 
 ### 3.3 系统管理
 
-![订单界面](https://raw.githubusercontent.com/buaase/Phylab-Web/master/docs/UserInterface/Index_Login.png)
+![订单界面](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_bill_page.png)
 
 订单界面实现用户订单管理功能：
 
 1.用户可增加/删除现有订单
 
-![个人信息界面](https://raw.githubusercontent.com/buaase/Phylab-Web/master/docs/UserInterface/Index_Login.png)
+![个人信息界面](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_person.png)
 
 个人信息界面功能：
 
@@ -267,26 +267,26 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计文档，形成初稿
 
 ### 3.4 其他功能界面
 
-![商品分类界面](https://raw.githubusercontent.com/buaase/Phylab-Web/master/docs/UserInterface/Login.png)
+![商品分类界面](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_category_page.png)
 
 商品分类界面功能：
 
 在分类界面，左侧为不同类别商品菜单栏，用户点击后在界面右侧可以查看不同类型商品
 
 
-![商品详情界面](https://raw.githubusercontent.com/buaase/Phylab-Web/master/docs/UserInterface/Login.png)
+![商品详情界面](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_detail_page.png)
 
 商品详情界面功能：
 
 用户可查看发布该商品的卖家信息，以及商品详细信息，并能通过右下角按钮将该商品加入购物车
 
-![商品搜索界面](https://raw.githubusercontent.com/buaase/Phylab-Web/master/docs/UserInterface/Login.png)
+![商品搜索界面](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_search_page.png)
 
 商品搜索界面功能：
 
 用户在主页点击搜索框后，出现左图界面，包括历史搜索记录和根据用户浏览/历史搜索提供的商品推荐，用户选择某标签或自己输入关键字后跳转到右图界面，选择具体商品后跳转至商品详情界面
 
-![商品发布界面](https://raw.githubusercontent.com/buaase/Phylab-Web/master/docs/UserInterface/Login.png)
+![商品发布界面](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_push_page.png)
 
 商品发布界面功能：
 
