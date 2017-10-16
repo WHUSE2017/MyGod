@@ -1,4 +1,4 @@
-# 需求规格说明文档
+﻿# 需求规格说明文档
 
 版本号:v1.0
 
@@ -248,7 +248,7 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计�
 
 
 ### 3.3 系统管理
-![购物车界面](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_chart_page.png)
+![购物车界面](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/PagePic/1.0_cart_page.png)
 
 购物车管理界面如上图：
 
