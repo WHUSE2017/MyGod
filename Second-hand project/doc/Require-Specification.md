@@ -1,4 +1,4 @@
-﻿# 需求规格说明文档
+# 需求规格说明文档
 
 版本号:v1.0
 
@@ -167,6 +167,8 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计�
 根据google9月份发布的android各版本的市场份额统计：
 
 ![](https://raw.githubusercontent.com/WHUSE2017/MyGod/master/Second-hand%20project/doc/AndroidPic/android_table.png)
+
+Android5.0及以上覆盖超过70%的用户，故本次项目拟定支持Android5.0及以上的版本。
 
 ### 2.4 假定和约束
 
