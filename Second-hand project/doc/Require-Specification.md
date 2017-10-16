@@ -661,7 +661,7 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计�
   </td>
   <td>确认功能、结果显示 
   </td>
-  <td>“关注”按钮变为红色 
+  <td>如果已经登录，“关注”按钮变为红色，如果没有登录，进入登录页面 
   </td>
   <td> 
   </td>
@@ -671,7 +671,7 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计�
   </td>
   <td>确认功能、结果显示 
   </td>
-  <td>进入购物车页面 
+  <td>如果已经登录，进入购物车页面，如果没有登录，进入登录页面 
   </td>
   <td> 
   </td>
@@ -681,7 +681,7 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计�
   </td>
   <td>确认功能、结果显示 
   </td>
-  <td>进入购物车页面 
+  <td>如果已经登录，进入购物车页面，如果没有登录，进入登录页面 
   </td>
   <td> 
   </td>
@@ -1402,7 +1402,7 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计�
   <p class=MsoListParagraph style='text-indent:0cm;mso-char-indent-count:0'><span
   style='font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:
   minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;
-  mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>提交成功，进入首页</span><span
+  mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>如果已经登录，提交成功，进入首页，如果没有登录，进入登录页面</span><span
   lang=EN-US><o:p></o:p></span></p>
   </td>
   <td width=77 valign=top style='width:57.9pt;border-top:none;border-left:none;
@@ -1742,7 +1742,7 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计�
   <p class=MsoListParagraph style='text-indent:0cm;mso-char-indent-count:0'><span
   style='font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:
   minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;
-  mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>进入我的订单页面</span><span
+  mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>如果已经登录，进入订单页面，如果没有登录，进入登录页面</span><span
   lang=EN-US><o:p></o:p></span></p>
   </td>
   <td width=77 valign=top style='width:57.9pt;border-top:none;border-left:none;
@@ -1781,7 +1781,7 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计�
   <p class=MsoListParagraph style='text-indent:0cm;mso-char-indent-count:0'><span
   style='font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:
   minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;
-  mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>显示我关注的商品</span><span
+  mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>如果已经登录，显示我关注的商品，如果没有登录，进入登录页面</span><span
   lang=EN-US><o:p></o:p></span></p>
   </td>
   <td width=77 valign=top style='width:57.9pt;border-top:none;border-left:none;
@@ -1820,7 +1820,7 @@ v1.0 | 将用户需求分析中的用户场景分析剥离，加入界面设计�
   <p class=MsoListParagraph style='text-indent:0cm;mso-char-indent-count:0'><span
   style='font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:
   minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;
-  mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>显示我卖出的商品</span><span
+  mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin'>如果已经登录，显示我卖出的商品，如果没有登录，进入登录页面</span><span
   lang=EN-US><o:p></o:p></span></p>
   </td>
   <td width=77 valign=top style='width:57.9pt;border-top:none;border-left:none;
