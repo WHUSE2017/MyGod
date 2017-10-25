@@ -12,15 +12,15 @@ import android.util.Log;
 public class Webservice extends WebserviceHelp
 {
      
-    private static final String  Webservice_Tag="缃戠粶鏈嶅姟";
+    private static final String  Webservice_Tag="网络服务";
     
         /***
-     * 鐢ㄦ埛鐧婚檰     
-     * @param userPhone 鎵嬫満鍙�
-     * @param password 瀵嗙爜
-     * @return 1:鐧婚檰鎴愬姛 other:鐧婚檰澶辫触 姝ゆ柟娉曞湪鏈嶅姟鍣ㄤ腑鐨勬槧灏勪负login锛屾湇鍔″櫒寮�鍙戣�呮敞鎰廐ttpUtils.post(URL, Login, params);涓殑login灏辨槸鏈嶅姟鍣ㄤ腑鐨刱ey锛屼綘鎶婄櫥闄嗗姛鑳藉懡鍚嶄负login锛屽叾浠栫被浼硷紝涓嬮潰灏变笉涓�涓�璧樿堪浜嗐��
+     * 用户登陆    
+     * @param usernum 学号
+     * @param password 密码
+     * @return 1:登陆成功 other:登录失败负login方法：httpUtils.post(URL, Login, params);
      */
-    public static int login(String userPhone,String password)
+    public static int login(String usernum,String password)
     {
         JSONObject object;
         
@@ -28,7 +28,7 @@ public class Webservice extends WebserviceHelp
         {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             
-            params.add(new BasicNameValuePair("userPhone",userPhone));
+            params.add(new BasicNameValuePair("userPhone",usernum));
             params.add(new BasicNameValuePair("password",password));
             
             object = HttpUtils.post(URL, Login, params);
@@ -45,7 +45,7 @@ public class Webservice extends WebserviceHelp
         
     }
     /***
-     * 鑾峰彇绉嶇被     
+     * 获取种类   
      * @return 
      */
     public static JSONObject getCategory()
@@ -69,8 +69,8 @@ public class Webservice extends WebserviceHelp
         
     }
     /***
-     * 鏍规嵁鍟嗗搧缂栧彿鑾峰彇鍟嗗搧 
-     * @param ItemId 鍟嗗搧缂栧彿 
+     * 通过id获得商品 
+     * @param ItemId 商品id 
      * @return 
      */
     public static String getItemById(String ItemId)
@@ -94,8 +94,8 @@ public class Webservice extends WebserviceHelp
         
     }
     /***
-     * 鏍规嵁鍟嗗搧缂栧彿鑾峰彇鍟嗗搧 
-     * @param ItemId 鍟嗗搧缂栧彿 
+     * 通过id获得用户信息 
+     * @param UserId 用户id 
      * @return 
      */
     public static String getUserById(String UserId)
@@ -105,7 +105,7 @@ public class Webservice extends WebserviceHelp
         try     
         {
             
-            object = HttpUtils.post(URL, GetCategory);
+            object = HttpUtils.post(URL, GetUserById);
         
                
             return object.optString("results");

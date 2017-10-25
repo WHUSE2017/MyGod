@@ -18,4 +18,7 @@ public class WebserviceHelp
       protected static final String GetCategory ="getcategory";
       /**根据商品编号获取商品信息**/
       protected static final String GetItemById ="getitembyid";
+      /**根据用户编号获取用户信息**/
+      protected static final String GetUserById ="getuserbyid";
+      
 }
