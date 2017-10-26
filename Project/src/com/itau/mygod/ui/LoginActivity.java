@@ -7,7 +7,9 @@ import java.util.concurrent.Callable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,9 +20,10 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.itau.mygod.R;
+import com.itau.jingdong.R;
 import com.itau.mygod.bean.Constants;
 import com.itau.mygod.task.Callback;
 import com.itau.mygod.ui.base.BaseActivity;
@@ -137,9 +140,7 @@ private LoginActivity loginActivity=null;
 	switch (v.getId()) {
 	case R.id.register:
 		mIntent=new Intent(LoginActivity.this, RegisterNormalActivity.class);
-		startActivity(mIntent);
-		
-		
+		startActivity(mIntent);			
 		break;
 
 		
@@ -157,27 +158,39 @@ private LoginActivity loginActivity=null;
 	}
 	
 	//之前的方式太繁瑣了
-	private void userlogin() {
-		 username=loginaccount.getText().toString().trim();
-		 password=loginpassword.getText().toString().trim();
-		String serverAdd = serverAddress;
-		
-		if(username.equals("")){
-			DisplayToast("用户名不能为空!");
+	private void userlogin() 
+	{
+		ConnectivityManager con = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
+		boolean wifi = con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+		boolean mobile = con.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
+		if(!(wifi||mobile))
+		{
+			Toast.makeText(this, "当前未连接网络！", Toast.LENGTH_SHORT).show();
 		}
-		if(password.equals("")){
-			DisplayToast("密码不能为空!");
-		}
-		
-		if(username.equals("test")&&password.equals("123")){
-			DisplayToast("登錄成功!");
-			Intent data=new Intent();  
-            data.putExtra("name", username);  
-//            data.putExtra("values", 100);  
-            //请求代码可以自己设置，这里设置成20  
-            setResult(20, data); 
+		else
+		{
+				 username=loginaccount.getText().toString().trim();
+			 password=loginpassword.getText().toString().trim();
+			String serverAdd = serverAddress;
 			
-			LoginActivity.this.finish();
+			if(username.equals("")){
+				DisplayToast("用户名不能为空!");
+			}
+			if(password.equals("")){
+				DisplayToast("密码不能为空!");
+			}
+			
+			if(username.equals("test")&&password.equals("123")){
+				DisplayToast("登陆成功!");
+				Intent data=new Intent();  
+	            data.putExtra("name", username);  
+	//            data.putExtra("values", 100);  
+	            //请求代码可以自己设置，这里设置成20  
+	            setResult(20, data); 
+				
+				LoginActivity.this.finish();
+			}
+		
 		}
 		
 //		new LoginTask().execute(username, password);
