@@ -259,6 +259,8 @@ private LoginActivity loginActivity=null;
 						Log.i("debug","done");
 						if(object.size() != 0)
 						{
+							Constants.status = true;
+							Constants.objectid =object.get(0).getObjectId();
 							Toast.makeText(getBaseContext(), "用户登陆成功！", Toast.LENGTH_LONG).show();
 							Intent intent = new Intent();   
 							intent.putExtra("login", ""); //向父Activity发送数据  
