@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 
-import com.itau.mygod.R;
+import com.itau.jingdong.R;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.widgets.jazzviewpager.JazzyViewPager;
 import com.itau.mygod.widgets.jazzviewpager.OutlineContainer;

@@ -13,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.InputType;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,8 +27,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import android.widget.Toast;
+import cn.bmob.v3.Bmob;
 
-import com.itau.mygod.R;
+import com.itau.jingdong.R;
 import com.itau.mygod.adapter.IndexGalleryAdapter;
 import com.itau.mygod.entity.IndexGalleryItemData;
 import com.itau.mygod.ui.base.BaseActivity;
@@ -43,7 +46,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class IndexActivity extends BaseActivity implements OnClickListener,
 		onSearchBarItemClickListener {
 	public static final String TAG = IndexActivity.class.getSimpleName();
-	
+	public long exitTime = 0;
 	//=============中部导航栏模块=====
 	private ImageButton shake;
 	private Intent mIntent;
@@ -83,6 +86,9 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
+		
+		
 		setContentView(R.layout.activity_index);
 		mHandler = new Handler(getMainLooper()) {
 
@@ -458,5 +464,23 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 	public void onColorButtonClick() {
 		// TODO Auto-generated method stub
 		CommonTools.showShortToast(this, "颜色购");
+	}
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN)
+		{
+			if((System.currentTimeMillis() - exitTime) > 2000)
+			{
+				Toast.makeText(getBaseContext(), "再按一次退出", Toast.LENGTH_SHORT).show();
+				exitTime = System.currentTimeMillis();
+			}
+			else
+			{
+				
+			    finish();
+			}
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 }

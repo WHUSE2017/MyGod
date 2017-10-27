@@ -3,8 +3,8 @@ package com.itau.mygod.ui.base;
 import java.util.Locale;
 import java.util.concurrent.Callable;
 
+import com.itau.jingdong.R;
 import com.itau.mygod.AppManager;
-import com.itau.mygod.R;
 import com.itau.mygod.config.Constants;
 import com.itau.mygod.image.ImageLoaderConfig;
 import com.itau.mygod.task.AsyncCallable;

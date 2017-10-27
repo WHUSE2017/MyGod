@@ -14,8 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+import com.itau.jingdong.R;
 import com.itau.mygod.AppManager;
-import com.itau.mygod.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class HomeActivity extends TabActivity {

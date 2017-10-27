@@ -73,6 +73,7 @@ public void register(View view) {
 									if(e == null)
 									{
 										Toast.makeText(getBaseContext(), "注册成功!", Toast.LENGTH_SHORT).show();
+										RegisterNormalActivity.this.finish();
 									}
 									else
 									{
