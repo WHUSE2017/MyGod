@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.itau.mygod.R;
+import com.itau.jingdong.R;
 
 public class CatergoryAdapter extends BaseAdapter {
 
@@ -44,26 +44,30 @@ public class CatergoryAdapter extends BaseAdapter {
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return data.size();
+//		return data.size();
+		return mImageIds.length;
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return data.get(position);
+//		return data.get(position);
+		return 0;
 	}
 
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return position;
+//		return position;
+		return 0;
 	}
-
+	@SuppressWarnings("null")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder=new ViewHolder();
 		//组装数据
-		if(convertView!=null){
+		if(convertView==null){
+//			convertView=LayoutInflater.from(context).inflate(R.layout.activity_category_item, null);
 			convertView=layoutInflater.inflate(R.layout.activity_category_item, null);
 			holder.image=(ImageView) convertView.findViewById(R.id.catergory_image);
 			holder.title=(TextView) convertView.findViewById(R.id.catergoryitem_title);

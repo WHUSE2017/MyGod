@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.itau.mygod.R;
+import com.itau.jingdong.R;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.utils.CommonTools;
 import com.itau.mygod.utils.ExitView;

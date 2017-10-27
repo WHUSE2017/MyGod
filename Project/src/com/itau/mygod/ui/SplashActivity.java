@@ -7,8 +7,9 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import cn.bmob.v3.Bmob;
 
-import com.itau.mygod.R;
+import com.itau.jingdong.R;
 import com.itau.mygod.config.Constants;
 import com.itau.mygod.ui.base.BaseActivity;
 
@@ -33,9 +34,12 @@ public class SplashActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);	
 		setContentView(R.layout.activity_splash);
-
+		
+		Bmob.initialize(this, "66071c2e737d3527b1de74f9d56b1812");       
+		
+		
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 		Constants.SCREEN_DENSITY = metrics.density;

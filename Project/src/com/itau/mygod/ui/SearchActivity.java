@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
-import com.itau.mygod.R;
+import com.itau.jingdong.R;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.utils.CommonTools;
 import com.itau.mygod.widgets.AutoClearEditText;
