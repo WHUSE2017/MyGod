@@ -20,10 +20,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -41,21 +37,19 @@ import com.itau.mygod.task.Callback;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.User;
 
-public class LoginActivity extends Activity implements OnClickListener {
-	private EditText et_username, et_pass;
-	private Button mlogin;
-	private Button mRegister;
+public class LoginActivity extends BaseActivity implements OnClickListener {
 	
-    private static final String Tag="LoginActivity";
-    private LoginActivity loginActivity=null;
+private static final String Tag="LoginActivity";
+private LoginActivity loginActivity=null;
+	private ImageView loginLogo,login_more;
+	private EditText loginaccount,loginpassword;
+	private ToggleButton isShowPassword;
+	private boolean isDisplayflag=false;//是否显示密码
+	private String getpassword;
+	private Button loginBtn,register;
 	private Intent mIntent;
-<<<<<<< HEAD
 	private String serverAddress="http://mdemo.e-cology.cn/login.do";
 	public static String MOBILE_SERVERS_URL="http://mserver.e-cology.cn/servers.do";
-=======
-	String username;
-	String password;
->>>>>>> 5b48a5617474366448eac929d9c6611ac32e2c12
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +57,90 @@ public class LoginActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		
-		et_username = (EditText) findViewById(R.id.loginaccount);
-		et_pass = (EditText) findViewById(R.id.loginpassword);
-		mlogin = (Button) findViewById(R.id.login);
-		mRegister = (Button) findViewById(R.id.register);
-		mlogin.setOnClickListener(this);
-		mRegister.setOnClickListener(this);		
 		loginActivity=LoginActivity.this;
-	}	
+		findViewById();
+		initView();
+	}
+	
+	@Override
+	protected void findViewById() {
+		loginLogo=(ImageView)this.findViewById(R.id.logo);
+		login_more=(ImageView)this.findViewById(R.id.login_more);
+		loginaccount=(EditText)this.findViewById(R.id.loginaccount);
+		loginpassword=(EditText)this.findViewById(R.id.loginpassword);
+		
+		isShowPassword=(ToggleButton)this.findViewById(R.id.isShowPassword);
+		loginBtn=(Button)this.findViewById(R.id.login);
+		register=(Button)this.findViewById(R.id.register);
+		
+		getpassword=loginpassword.getText().toString();
+	}
 
+	
+	
+	
+	@Override
+	protected void initView() {
+		
+		//显示密码的togglebutton点击事件,动态显示隐藏密码--->点击前先判定
+//		isShowPassword.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				
+//				if(getpassword.equals("")||getpassword.length()<=0){
+//					DisPlay("密码不能为空");
+//				}
+//				
+//				if(!isDisplayflag){
+//					//隐藏密码
+//					//loginpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance()); 
+//					//loginpassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD); 
+//					loginpassword.setInputType(0x90); 
+//					
+//				}else{
+//					//loginpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD); 
+//					//loginpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());  
+//					loginpassword.setInputType(0x81);
+//				}
+//				//isDisplayflag=!isDisplayflag;
+//				loginpassword.postInvalidate();
+//			}
+//		});
+		
+		
+		register.setOnClickListener(this);
+		
+		isShowPassword.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				
+				Log.i(Tag, "开关按钮状态="+isChecked);
+				
+//				if(getpassword.equals("")||getpassword.length()<=0){
+//					DisPlay("密码不能为空");
+//				}
+				
+			
+				if(isChecked){
+					//隐藏
+					loginpassword.setInputType(0x90);    
+					//loginpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+				}else{
+					//明文显示	
+					loginpassword.setInputType(0x81); 
+					//loginpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+				}
+				Log.i("togglebutton", ""+isChecked);
+				//loginpassword.postInvalidate();
+			}
+		});
+	
+		
+		loginBtn.setOnClickListener(this);
+	
+	}
 
 	@Override
 	public void onClick(View v) {
@@ -79,7 +148,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 	case R.id.register:
 		mIntent=new Intent(LoginActivity.this, RegisterNormalActivity.class);
 		startActivity(mIntent);			
-<<<<<<< HEAD
 		break;
 
 		
@@ -90,18 +158,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 		
 		break;
 		
-=======
-		break;		
-	case R.id.login:		
-		login(v);
-		break;		
->>>>>>> 5b48a5617474366448eac929d9c6611ac32e2c12
 	default:
 		break;
 	}
 		
 	}
-<<<<<<< HEAD
 	
 	//之前的方式太繁瑣了
 //	private void userlogin() 
@@ -163,24 +224,32 @@ public class LoginActivity extends Activity implements OnClickListener {
 			@Override
 			public Boolean call() throws Exception {
 				Log.i("debug","运行里层了！");
-//				String clientVersion = getVersionName();
-//				String deviceid = getDeviceId();
-//				String token = getToken();
-//				String clientOs = getClientOs();
-//				String clientOsVer = getClientOsVer();
-//				String language = getLanguage();
-//				String country = getCountry();
-//				
-//				Constants.clientVersion = clientVersion;
-//				Constants.deviceid = deviceid;
-//				Constants.token = token;
-//				Constants.clientOs = clientOs;
-//				Constants.clientOsVer = clientOsVer;
-//				Constants.language = language;
-//				Constants.country = country;
-//				Constants.user = username;
-//				Constants.pass = password;
+				String clientVersion = getVersionName();
+				String deviceid = getDeviceId();
+				String token = getToken();
+				String clientOs = getClientOs();
+				String clientOsVer = getClientOsVer();
+				String language = getLanguage();
+				String country = getCountry();
+				
+				Constants.clientVersion = clientVersion;
+				Constants.deviceid = deviceid;
+				Constants.token = token;
+				Constants.clientOs = clientOs;
+				Constants.clientOsVer = clientOsVer;
+				Constants.language = language;
+				Constants.country = country;
+				Constants.user = username;
+				Constants.pass = password;
 
+				return true;
+			}
+			
+		}, new Callback<Boolean>() {
+
+			@Override
+			public void onCallback(Boolean pCallbackValue) {
+				// TODO Auto-generated method stub
 				BmobQuery<User> query = new BmobQuery<User>();
 				query.addWhereEqualTo("name", username);
 				query.addWhereEqualTo("passwd", password);
@@ -203,22 +272,13 @@ public class LoginActivity extends Activity implements OnClickListener {
 						}		
 					}			
 				});
-				return true;
-			}
-			
-		}, new Callback<Boolean>() {
-
-			@Override
-			public void onCallback(Boolean pCallbackValue) {
-				// TODO Auto-generated method stub
-				
 			}
 		}, new Callback<Exception>() {
 
 			@Override
 			public void onCallback(Exception pCallbackValue) {
 				// TODO Auto-generated method stub
-				
+				Log.i("debug",pCallbackValue.getMessage());
 			}
 		}, true, getResources().getString(R.string.login_loading));
 		
@@ -246,34 +306,4 @@ public class LoginActivity extends Activity implements OnClickListener {
 //		}
 //	}
 	
-=======
-	private void login(View view) {
-		 if (et_username.getText().toString().length() == 0 || et_pass.getText().toString().length() == 0) {  
-			 Toast.makeText(getBaseContext(), "学号或密码不能为空！", Toast.LENGTH_LONG).show();  
-	            return; 
-		 }
-		 else {
-		BmobQuery<User> query = new BmobQuery<User>();
-		query.addWhereEqualTo("name", et_username.getText().toString());
-		query.addWhereEqualTo("passwd", et_pass.getText().toString());
-		query.findObjects(new FindListener<User>() {
-			@Override
-			public void done(List<User> object, BmobException e) {
-				if(object.size() != 0)
-				{
-					Toast.makeText(getBaseContext(), "登录成功！", Toast.LENGTH_LONG).show();
-				}
-				else
-				{
-					Toast.makeText(getBaseContext(), "登录失败，请检查用户名和密码!", Toast.LENGTH_SHORT).show();
-							
-				}		
-			}			
-		});
-		}
-	}
->>>>>>> 5b48a5617474366448eac929d9c6611ac32e2c12
 }
-	
-
-	
