@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.itau.mygod.tbviewer;
 
 import java.util.Timer;
@@ -555,3 +556,4 @@ public class ScrollViewContainer extends RelativeLayout {
 	}
 
 }
+>>>>>>> 3ca326f991f769ed80235abb57e9811674989036

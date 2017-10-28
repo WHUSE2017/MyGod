@@ -163,7 +163,11 @@
         <activity android:name="com.itau.mygod.zxing.CaptureResultActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"></activity>
+<<<<<<< HEAD
         
+=======
+		
+>>>>>>> 3ca326f991f769ed80235abb57e9811674989036
     </application>
 
 </manifest>
