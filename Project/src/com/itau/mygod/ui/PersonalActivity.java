@@ -28,7 +28,11 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 	private ExitView exit;
 	private LinearLayout Ly_login,Ly_Other;
 	private RelativeLayout Ly_personalInfo;
+<<<<<<< HEAD
 	private RelativeLayout personalOrder;
+=======
+	private RelativeLayout myorder;
+>>>>>>> 3ca326f991f769ed80235abb57e9811674989036
 	private TextView username;
 	private int LOGIN_CODE=100;
 
@@ -55,7 +59,11 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 		Ly_personalInfo=(RelativeLayout)findViewById(R.id.personal);
 		Ly_Other=(LinearLayout)findViewById(R.id.other_layout);
 		username=(TextView)findViewById(R.id.username);
+<<<<<<< HEAD
 		personalOrder=(RelativeLayout)findViewById(R.id.personal_all_order);
+=======
+		myorder=(RelativeLayout)findViewById(R.id.myorder);
+>>>>>>> 3ca326f991f769ed80235abb57e9811674989036
 	}
 
 	@Override
@@ -66,7 +74,12 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 		mLoginButton.setOnClickListener(this);
 		//mMoreButton.setOnClickListener(this);
 		mExitButton.setOnClickListener(this);
+<<<<<<< HEAD
 		personalOrder.setOnClickListener(this);
+=======
+		myorder.setOnClickListener(this);
+		
+>>>>>>> 3ca326f991f769ed80235abb57e9811674989036
 	}
 
 	@Override
@@ -92,6 +105,16 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 			exit.showAtLocation(PersonalActivity.this.findViewById(R.id.layout_personal), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
 			
 			
+			break;
+			
+		case R.id.myorder:
+			try{
+            mIntent=new Intent(PersonalActivity.this, OrderActivity.class);
+			
+			startActivity(mIntent);
+			}catch(Exception e){
+				Log.i("错误",e.getMessage());
+			}
 			break;
 			
 		default:
