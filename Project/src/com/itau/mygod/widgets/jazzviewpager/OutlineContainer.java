@@ -1,6 +1,6 @@
 package com.itau.mygod.widgets.jazzviewpager;
 
-import com.itau.mygod.R;
+import com.itau.jingdong.R;
 
 import android.content.Context;
 import android.content.res.Resources;

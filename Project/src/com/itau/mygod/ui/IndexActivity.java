@@ -12,6 +12,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -81,6 +82,8 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 	private EditText mSearchBox = null;
 	private ImageButton mCamerButton = null;
 	private LinearLayout mTopLayout = null;
+	private ImageButton mshake=null;
+	private ImageButton mHistoryBtn=null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,36 +131,14 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 		mSearchBox = (EditText) findViewById(R.id.index_search_edit);
 		mCamerButton = (ImageButton) findViewById(R.id.index_camer_button);
 		mTopLayout = (LinearLayout) findViewById(R.id.index_top_layout);
+		mshake=(ImageButton)findViewById(R.id.index_shake);
+		mHistoryBtn=(ImageButton)findViewById(R.id.index_history_btn);
 		
-		shake=(ImageButton)findViewById(R.id.index_shake);
-		
-		//添加事件
-		shake.setOnClickListener(indexClickListener);
 	}
 
 	
-	private OnClickListener indexClickListener=new OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-			switch (v.getId()) {
-			case R.id.index_shake:
-				mIntent=new Intent(IndexActivity.this, IndexShakeActivity.class);
-				startActivity(mIntent);
-				break;
-
-			default:
-				break;
-			}
-			
-		}
-	};
-	
 	@Override
 	protected void initView() {
-		
-		
-		
 		
 		// TODO Auto-generated method stub
 
@@ -237,6 +218,8 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 
 		mCamerButton.setOnClickListener(this);
 		mSearchBox.setOnClickListener(this);
+		mshake.setOnClickListener(this);
+		mHistoryBtn.setOnClickListener(this);
 
 		mSearchBox.setInputType(InputType.TYPE_NULL);
 	}
@@ -439,6 +422,21 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 
 		case R.id.index_search_edit:
 			openActivity(SearchActivity.class);
+			break;
+			
+		case R.id.index_history_btn:
+			mIntent=new Intent(IndexActivity.this, HistoryActivity.class);
+			startActivity(mIntent);
+			break;
+			
+		case R.id.index_shake:
+			try{
+			mIntent=new Intent(IndexActivity.this, IndexProductActivity.class);
+			startActivity(mIntent);
+			//IndexActivity.this.finish();
+			}catch(Exception e){
+				Log.i("错误",e.getMessage());
+			}
 			break;
 
 		default:

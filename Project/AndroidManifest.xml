@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
 
     <uses-feature android:name="android.hardware.camera" />
@@ -75,6 +75,7 @@
             android:name="com.itau.mygod.ui.IndexActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme" />
+       
         <activity
             android:name="com.itau.mygod.ui.CategoryActivity"
             android:launchMode="singleTop"
@@ -82,6 +83,10 @@
         
         <activity
             android:name="com.itau.mygod.ui.PersonalActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.itau.mygod.ui.HistoryActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme" />
         <activity
@@ -105,9 +110,14 @@
             android:launchMode="singleTop"
             android:theme="@style/AppTheme" >
         </activity>
+        <activity
+            android:name="com.itau.mygod.ui.ProductDetailActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme" >
+        </activity>
         
         <activity
-            android:name="com.itau.mygod.ui.IndexShakeActivity"
+            android:name="com.itau.mygod.ui.IndexProductActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme" >
         </activity>
@@ -122,12 +132,22 @@
             android:theme="@style/AppTheme" >
         </activity>
         <activity
+            android:name="com.itau.mygod.ui.OrderActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
             android:name="com.itau.mygod.ui.IndexDaily"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme" >
         </activity>
         <activity
             android:name="com.itau.mygod.ui.IndexEbookActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.itau.mygod.ui.IndexShakeActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme" >
         </activity>
@@ -139,6 +159,7 @@
         <activity android:name="com.itau.mygod.zxing.CaptureResultActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"></activity>
+        
     </application>
 
 </manifest>
