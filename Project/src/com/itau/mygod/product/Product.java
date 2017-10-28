@@ -3,15 +3,17 @@ package com.itau.mygod.product;
 import java.io.File;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 public class Product extends BmobObject{
-	private File image;
+	private BmobFile image;
 	private String title;
 	private String price;
-	public File getImage() {
-		return image;
+	
+	public BmobFile getImage() {	
+    return image;
 	}
-	public void setImage(File image) {
+	public void setImage(BmobFile image) {
 		this.image = image;
 	}
 	public String getTitle() {
@@ -26,5 +28,7 @@ public class Product extends BmobObject{
 	public void setPrice(String price) {
 		this.price = price;
 	}
+	 public String getIconUrl() {
+		 return image.getUrl(); } 
 
 }
