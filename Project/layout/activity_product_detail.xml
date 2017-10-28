@@ -2,19 +2,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
+                    
+     <LinearLayout
+                android:id="@+id/id_title"
+                android:layout_width="fill_parent"
+                android:layout_height="45dip"
+                android:background="@drawable/android_title_bg" >
+
+        <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical"
+               android:layout_marginLeft="10dip"
+               android:text="商品详情"
+               android:textColor="#ffffff"
+               android:textSize="@dimen/medium_text_size"  />
+    </LinearLayout>
+      
      <com.itau.mygod.tbviewer.ScrollViewContainer
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content" 
+        android:layout_below="@id/id_title">
+        
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-            <RelativeLayout
+          <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
 
-                <LinearLayout
+
+               <LinearLayout
                     android:id="@+id/imagesLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -23,17 +43,51 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="348dp"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
                         android:background="@drawable/productb" />
+                    
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="这里是标题"
+                        android:textSize="@dimen/medium_text_size" />
                    
-                   <TextView 
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:text="价格：XXX"
-                    android:background="@android:color/white"
-                    android:gravity="center" />
+                     <LinearLayout
+                       android:id="@+id/priceLayout"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="10dp"
+                       android:layout_marginRight="10dp"
+                       android:layout_below="@id/imagesLayout"
+                       android:orientation="horizontal" >
+
+                         <TextView
+                          android:id="@+id/product_price"
+                          android:layout_width="wrap_content"
+                          android:layout_height="50dp"
+                          android:text="价格:"
+                          android:textColor="@color/black"
+                          android:textSize="@dimen/small_text_size" />
+   
+
+                        <TextView
+                           android:id="@+id/product_price_num"
+                           android:layout_width="wrap_content"
+                           android:layout_height="50dp"
+                           android:layout_marginLeft="10dp"
+                           android:text="这里是价格"
+                           android:textColor="@color/black"
+                           android:textSize="@dimen/small_text_size" />
+                      </LinearLayout>
 
                 </LinearLayout>
+                
+               
 
                 <TextView
                     android:layout_width="match_parent"
@@ -41,7 +95,7 @@
                     android:layout_below="@id/imagesLayout"
                     android:background="#eeeeee"
                     android:gravity="center"
-                    android:text="拖动查看图文详情"
+                    android:text="拖动查看商品详情"
                     android:textColor="#aaaaaa" />
            </RelativeLayout>
         </ScrollView>
@@ -57,11 +111,15 @@
                 android:background="@android:color/white"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" >
+
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="600dp"
                     android:background="@android:color/white"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:text="商品详情 "
+                    android:textSize="@dimen/medium_text_size" />
+
             </LinearLayout>
         </ScrollView>
     </com.itau.mygod.tbviewer.ScrollViewContainer>  
@@ -81,9 +139,9 @@
                  android:background="@drawable/main_navigation_background"
                  android:text="我想要"
                  android:textColor="@color/white"
-                 android:textSize="@dimen/small_middle_text_size" >
+                 android:textSize="@dimen/small_middle_text_size" />
     
-             </Button>
+
      </LinearLayout>  
     
 </RelativeLayout>
