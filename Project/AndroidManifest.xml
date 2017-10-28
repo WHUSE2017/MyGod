@@ -136,9 +136,14 @@
             android:launchMode="singleTop"
             android:theme="@style/AppTheme" >
         </activity>
+		<activity
+            android:name="com.itau.mygod.product.HistoryActivity"
+            android:label="@string/title_activity_history" >
+        </activity>
         <activity android:name="com.itau.mygod.zxing.CaptureResultActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"></activity>
+		
     </application>
 
 </manifest>
