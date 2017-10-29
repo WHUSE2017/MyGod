@@ -38,9 +38,6 @@ public class HomeActivity extends TabActivity {
 		AppManager.getInstance().addActivity(this);
 		setContentView(R.layout.activity_home);
 		
-		
-
-		
 		findViewById();
 		initView();
 	}

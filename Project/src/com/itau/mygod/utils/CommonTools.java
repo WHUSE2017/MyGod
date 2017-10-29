@@ -3,7 +3,7 @@ package com.itau.mygod.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.itau.mygod.R;
+import com.itau.jingdong.R;
 
 import android.app.ProgressDialog;
 import android.content.Context;

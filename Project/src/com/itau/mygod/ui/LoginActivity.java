@@ -214,9 +214,11 @@ private LoginActivity loginActivity=null;
 		
 		if(username.equals("")){
 			DisplayToast("用户名不能为空!");
+			return;
 		}
 		if(password.equals("")){
 			DisplayToast("密码不能为空!");
+			return;
 		}
 		Log.i("debug","运行外层了！");
 		loginActivity.doAsync(new Callable<Boolean>() {
