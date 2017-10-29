@@ -2,10 +2,12 @@ package com.itau.mygod.ui;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.PublicKey;
 import java.util.List;
 
 import javax.security.auth.Destroyable;
 
+import android.R.string;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -29,6 +31,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.Toast;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
@@ -36,8 +39,10 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
 import com.itau.jingdong.R;
+import com.itau.mygod.bean.Constants;
 import com.itau.mygod.ui.IndexShakeActivity;
 import com.itau.mygod.user.Product;
+import com.itau.mygod.user.User;
 
 public class HistoryActivity extends Activity{
 	
@@ -58,7 +63,7 @@ public class HistoryActivity extends Activity{
 	private final int IMAGE_CODE = 200; // 这里的IMAGE_CODE是自己任意定义的
 	private boolean isCompleted=false;
 	private static final String tag = "HistoryActivity";
-
+	public String salerIdString="1ab4f39828";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -139,7 +144,7 @@ public class HistoryActivity extends Activity{
 				if(isCompleted)
 				{
 					isCompleted=false;
-				intent=new Intent(HistoryActivity.this,IndexShakeActivity.class);
+				intent=new Intent(HistoryActivity.this,IndexProductActivity.class);
 				startActivity(intent);
 				pic_path="";
 				finish();
@@ -232,20 +237,6 @@ public class HistoryActivity extends Activity{
         }
 	}
 	
-//图片？？
- 
-	
-	/**
-	 * 在用户界面显示所选图片   update
-	 * @param data
-	 */
-//	private void setImage1() {  
-//		//进入图库
-//	    Intent intent = new Intent(Intent.ACTION_PICK, null);  
-//	    intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_UNSPECIFIED);  
-//	    startActivityForResult(intent, IMAGE_CODE);  
-//	} 
-	 
 	 /**
 	  * 检查商品信息完整性：商品名+价格
 	  * @return 
@@ -264,22 +255,17 @@ public class HistoryActivity extends Activity{
 		}
 		else if(pic_path.length()==0) 
 		{
-			System.out.println("pic_path为空");
+			
+			
 			final Product product = new Product();
 			product.setTitle(product_name.getText().toString());
 			product.setType(productClass);
 			product.setPrice(productPrice);
 			product.setDescription(productDescription);
 			product.setArea(productArea);
+			product.setSalerId(Constants.userobject);		
 			BmobQuery<Product> query = new BmobQuery<Product>();
-			query.addWhereEqualTo("title", product_name.getText().toString());
-			query.addWhereEqualTo("type", productClass);
-			query.addWhereEqualTo("price", productPrice);
-			query.addWhereEqualTo("description", productDescription);
-			query.addWhereEqualTo("area", productArea);
-			
 			query.findObjects(new FindListener<Product>() {
-				
 				@Override
 				public void done(List<Product> object, BmobException e) {
 					
@@ -289,41 +275,40 @@ public class HistoryActivity extends Activity{
 							public void done(String objectId, BmobException e) {
 								if(e == null)
 								{
-									Toast.makeText(getBaseContext(), "无图片发布成功!"+pic_path+"没了", Toast.LENGTH_SHORT).show();
+									Toast.makeText(getBaseContext(), "无图片发布成功!"+pic_path, Toast.LENGTH_SHORT).show();
 								}
 								else
 								{
-									Toast.makeText(getBaseContext(), "无图片发布失败!"+pic_path+"没了", Toast.LENGTH_LONG).show();
+									Toast.makeText(getBaseContext(), "无图片发布失败!"+pic_path, Toast.LENGTH_LONG).show();
 								}
 							}				
-						});
-					
-					
-					
+						});				
 				}
 			});
+			
 		//return true;
 			isCompleted=true;
 			
 		}
-        else
+        else//有图片上传
         {
         	final BmobFile file_image=new BmobFile(new File(pic_path));
 		    file_image.uploadblock(new UploadFileListener() {
-				
-
+		    	Product product = new Product();
 				@Override
 				public void done(BmobException arg0) {
 					// TODO Auto-generated method stub
 					if(arg0==null){
-						Toast.makeText(HistoryActivity.this, "上传文件成功:" + file_image.getFileUrl(), Toast.LENGTH_SHORT).show();
-					Product product = new Product();
+					Toast.makeText(HistoryActivity.this, "上传文件成功:" + file_image.getFileUrl(), Toast.LENGTH_SHORT).show();
+					//Product product = new Product();
 					product.setTitle(product_name.getText().toString());
 					product.setType(productClass);
 					product.setPrice(productPrice);
+					//product.setSalerId(salerIdString);
 					product.setDescription(productDescription);
 					product.setArea(productArea);
 					product.setImage(file_image);
+					product.setSalerId(Constants.userobject);
 					product.save(new SaveListener<String>() {
                         @Override
                         public void done(String s, BmobException e) {
@@ -337,45 +322,20 @@ public class HistoryActivity extends Activity{
 					}else{
 						Log.e(tag,"失败："+arg0.getMessage()+","+arg0.getErrorCode());
 						Toast.makeText(HistoryActivity.this,"发布失败！", Toast.LENGTH_SHORT).show();
-					}
-//					BmobQuery<Product> query = new BmobQuery<Product>();
-//					query.addWhereEqualTo("title", product_name.getText().toString());
-//					query.addWhereEqualTo("type", productClass);
-//					query.addWhereEqualTo("price", productPrice);
-//					query.addWhereEqualTo("description", productDescription);
-//					query.addWhereEqualTo("area", productArea);
-//					query.addWhereEqualTo("image", file_image);
-					
-//					query.findObjects(new FindListener<Product>() {
-//						
-//						@Override
-//						public void done(List<Product> object, BmobException e) {
-//							
-//								product.save(new SaveListener<String>() {
-//									
-//									@Override
-//									public void done(String objectId, BmobException e) {
-//										if(e == null)
-//										{
-//											//Toast.makeText(getBaseContext(), "有图片发布成功!", Toast.LENGTH_SHORT).show();
-//											Toast.makeText(getBaseContext(), "有图片发布成功，path="+pic_path, Toast.LENGTH_LONG).show();
-//										}
-//										else
-//										{
-//											//Toast.makeText(getBaseContext(), "有图片发布失败!", Toast.LENGTH_LONG).show();
-//											Toast.makeText(getBaseContext(), "有图片发布失败!，path="+pic_path, Toast.LENGTH_LONG).show();
-//										}
-//									}				
-//								});
-//						}
-//					});
-					
+					}	
 				}
 				 @Override
 	                public void onProgress(Integer value) {
 	                    // 返回的上传进度（百分比）
 	                }
 			}); 
+		    
+		    
+		    
+		    
+		    
+		    
+		    
 			
 		//return true;
 		    isCompleted=true;
