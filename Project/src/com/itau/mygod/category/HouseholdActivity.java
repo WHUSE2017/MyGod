@@ -28,7 +28,10 @@ import com.itau.jingdong.R;
 import com.itau.mygod.adapter.ProductAdapter;
 import com.itau.mygod.bean.Constants;
 import com.itau.mygod.task.Callback;
+<<<<<<< HEAD
 import com.itau.mygod.ui.ProductDetailActivity;
+=======
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.Product;
 import com.itau.mygod.user.User;
@@ -36,7 +39,10 @@ import com.itau.mygod.user.User;
 public class HouseholdActivity extends Activity {
 	private ListView household_ListView;
 	private ArrayList<Product> data;
+<<<<<<< HEAD
 	private Intent mIntent;
+=======
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,6 +78,7 @@ public class HouseholdActivity extends Activity {
 					@Override
 					public void onItemClick(AdapterView<?> adapterview, View view, int parent,
 							long id) {
+<<<<<<< HEAD
 						//Toast.makeText(IndexProductActivity.this, "你点击了第"+id+"项", 1).show();
 						Bundle bundle=new Bundle();
 						mIntent=new Intent();
@@ -88,6 +95,9 @@ public class HouseholdActivity extends Activity {
 						mIntent.putExtras(bundle);
 						mIntent.setClass(HouseholdActivity.this, ProductDetailActivity.class);
 						startActivity(mIntent);
+=======
+						Toast.makeText(HouseholdActivity.this, "你点击了第"+id+"项", 1).show();
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 						
 					}
 				});

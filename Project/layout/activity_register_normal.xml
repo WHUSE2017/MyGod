@@ -59,7 +59,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+<<<<<<< HEAD
             android:text="@string/register_normal_useraccount_userphone"
+=======
+            android:text="@string/normal_useraccount_userphone"
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
             android:textColor="@color/black" />
        
         <EditText 
@@ -67,7 +71,11 @@
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:layout_marginLeft="20dp"
+<<<<<<< HEAD
             android:hint="@string/register_normal_useraccount_userphone_hint"
+=======
+            android:hint="@string/register_normal_useraccount_hint"
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
             android:inputType="number"
            android:background="@drawable/category_selection_gridview_bg"
             android:layout_gravity="center_vertical"

@@ -26,7 +26,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.itau.mygod.bean.Constants;
+=======
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 import com.itau.mygod.user.Product;
 import com.itau.mygod.user.Order;
 import com.itau.mygod.user.User;
@@ -38,13 +41,20 @@ public class ProductDetailActivity extends Activity implements OnClickListener{
 	private static final String Tag="ProductDeatilActivity";
 	private ProductDetailActivity productBuyActivity=null;
 	private Button productBuy;
+<<<<<<< HEAD
 	private ImageView productImage;
+=======
+	ImageView productImage;
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	private String productTitle;
 	private String productPrice;
 	private String productContent;
 	private String productArea;
+<<<<<<< HEAD
 	private String productId;
 	private String productImageUrl;
+=======
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -67,8 +77,13 @@ public class ProductDetailActivity extends Activity implements OnClickListener{
 		productContent=bundle.getString("productContent");
 		tv_Content.setText(productContent);
 		productArea=bundle.getString("productArea");
+<<<<<<< HEAD
 		productId = bundle.getString("productId");
 		productImageUrl = bundle.getString("productImage");
+=======
+		
+		
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 		initView();
 	}
 	
@@ -125,10 +140,13 @@ public class ProductDetailActivity extends Activity implements OnClickListener{
 	        	 order.setTitle(productTitle);
 	        	 order.setPrice(productPrice);
 	        	 order.setArea(productArea);
+<<<<<<< HEAD
 	        	 order.setBuyerId(Constants.userobject);
 	        	 Product product = new Product();
 	        	 product.setObjectId(productId);
 	        	 order.setPId(product);
+=======
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	        	 order.setDescription(productContent);
 	        	 order.setStatus(1);
 	        	 
@@ -158,12 +176,16 @@ public class ProductDetailActivity extends Activity implements OnClickListener{
 			}//返回按钮       
 	  
 	     }).show();
+<<<<<<< HEAD
 		}else{
 			Toast.makeText(getBaseContext(), "请先登录！", Toast.LENGTH_LONG).show();
 			Intent mIntent=new Intent(ProductDetailActivity.this, LoginActivity.class);
 			
 			startActivityForResult(mIntent, 100);
 		}
+=======
+	  
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	 }  	
 	
 	@Override
