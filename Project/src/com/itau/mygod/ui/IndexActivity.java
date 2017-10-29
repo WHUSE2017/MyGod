@@ -33,6 +33,7 @@ import cn.bmob.v3.Bmob;
 
 import com.itau.jingdong.R;
 import com.itau.mygod.adapter.IndexGalleryAdapter;
+import com.itau.mygod.bean.Constants;
 import com.itau.mygod.entity.IndexGalleryItemData;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.utils.CommonTools;
@@ -425,9 +426,17 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 			break;
 			
 		case R.id.index_history_btn:
-			mIntent=new Intent(IndexActivity.this, HistoryActivity.class);
-			startActivity(mIntent);
-			break;
+			if (Constants.status) {
+				mIntent=new Intent(IndexActivity.this, HistoryActivity.class);
+				startActivity(mIntent);
+				break;
+			}
+			else {
+				Toast.makeText(getBaseContext(), "您还未登录，请先登录！", Toast.LENGTH_SHORT).show();
+				mIntent=new Intent(IndexActivity.this, LoginActivity.class);
+				startActivity(mIntent);
+				break;
+			}
 			
 		case R.id.index_shake:
 			try{

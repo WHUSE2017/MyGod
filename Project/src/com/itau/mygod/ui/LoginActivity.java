@@ -207,7 +207,15 @@ private LoginActivity loginActivity=null;
 
 	//登录系统
 	private void doLogin(){
-		
+		ConnectivityManager con = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
+		boolean wifi = con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+		boolean mobile = con.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
+		if(!(wifi||mobile))
+		{
+			Toast.makeText(this, "当前未连接网络！", Toast.LENGTH_SHORT).show();
+		}
+		else
+		{
 		final String username=loginaccount.getText().toString().trim();
 		final String password=loginpassword.getText().toString().trim();
 		String serverAdd = serverAddress;
@@ -262,10 +270,10 @@ private LoginActivity loginActivity=null;
 						if(object.size() != 0)
 						{
 							Constants.status = true;
-							Constants.objectid =object.get(0).getObjectId();
+							Constants.userobject = object.get(0);
 							Toast.makeText(getBaseContext(), "用户登陆成功！", Toast.LENGTH_LONG).show();
 							Intent intent = new Intent();   
-							intent.putExtra("login", ""); //向父Activity发送数据  
+							intent.putExtra("username", Constants.userobject.getName()); //向父Activity发送数据  
 							setResult(20,intent);        
 							finish();
 						}
@@ -285,7 +293,7 @@ private LoginActivity loginActivity=null;
 				Log.i("debug",pCallbackValue.getMessage());
 			}
 		}, true, getResources().getString(R.string.login_loading));
-		
+	}	
 	}
 
 //	class LoginTask extends AsyncTask<String, Void, JSONObject>{

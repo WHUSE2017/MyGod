@@ -1,11 +1,11 @@
-package com.itau.mygod.ui;
-
+package com.itau.mygod.category;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,35 +28,29 @@ import com.itau.jingdong.R;
 import com.itau.mygod.adapter.ProductAdapter;
 import com.itau.mygod.bean.Constants;
 import com.itau.mygod.task.Callback;
+import com.itau.mygod.ui.ProductDetailActivity;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.Product;
 import com.itau.mygod.user.User;
 
-
-public class IndexProductActivity extends BaseActivity {
-
-	private ListView product_listview;
+public class ClothingActivity extends Activity {
+	private ListView clothing_ListView;
 	private ArrayList<Product> data;
 	private Intent mIntent;
-//	private LayoutInflater layoutInflater;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_index_product);
+		setContentView(R.layout.activity_clothing);
 		initData();
 		findViewById();
 		initView();
 	}
-
-	@Override
 	protected void findViewById() {
-		product_listview=(ListView)this.findViewById(R.id.listView1);
+		clothing_ListView=(ListView)this.findViewById(R.id.clothing_listview);
 		BmobQuery<Product> query = new BmobQuery<Product>();
-		query.order("Ctype");
+		query.order("type");
 		final ProgressDialog mPD;
-		mPD=ProgressDialog.show(IndexProductActivity.this, getTitle(), getResources().getString(R.string.product_loading), true, false);
+		mPD=ProgressDialog.show(ClothingActivity.this, getTitle(), getResources().getString(R.string.category_loading), true, false);
 		query.findObjects(new FindListener<Product>() {
 			@Override
 			public void done(List<Product> object, BmobException e) {
@@ -64,13 +58,17 @@ public class IndexProductActivity extends BaseActivity {
 				if(object.size() != 0)
 				{
 					for(Product ct:object){
-						data.add(ct);
+						if(ct.getType().equals("衣服"))
+						{
+							data.add(ct);
+						}
+
 					}
 				}	
 				Log.i("debug","setAdapte");
-				product_listview.setAdapter(new ProductAdapter(IndexProductActivity.this,data,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+				clothing_ListView.setAdapter(new ProductAdapter(ClothingActivity.this,data,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 				mPD.dismiss();
-				product_listview.setOnItemClickListener(new OnItemClickListener() {	
+				clothing_ListView.setOnItemClickListener(new OnItemClickListener() {	
 					@Override
 					public void onItemClick(AdapterView<?> adapterview, View view, int parent,
 							long id) {
@@ -88,7 +86,7 @@ public class IndexProductActivity extends BaseActivity {
 						else
 							bundle.putString("productImage",data.get(Integer.parseInt(String.valueOf(id))).getImage().getUrl());
 						mIntent.putExtras(bundle);
-						mIntent.setClass(IndexProductActivity.this, ProductDetailActivity.class);
+						mIntent.setClass(ClothingActivity.this, ProductDetailActivity.class);
 						startActivity(mIntent);
 						
 					}
@@ -98,7 +96,6 @@ public class IndexProductActivity extends BaseActivity {
 	}
 	
 
-	@Override
 	protected void initView() {
 		// TODO Auto-generated method stub
 
@@ -108,7 +105,4 @@ public class IndexProductActivity extends BaseActivity {
 		data = new ArrayList<Product>();
 	}
 	
-	
-	
-
 }
