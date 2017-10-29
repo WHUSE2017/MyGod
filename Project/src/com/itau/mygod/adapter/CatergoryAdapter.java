@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.itau.jingdong.R;
+import com.itau.mygod.user.Category;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class CatergoryAdapter extends BaseAdapter {
 
-	 private ArrayList<HashMap<String, Object>> data;  
+	 private ArrayList<Category> data;  
 	    /** 
 	     * LayoutInflater 类是代码实现中获取布局文件的主要形式 
 	     *LayoutInflater layoutInflater = LayoutInflater.from(context); 
@@ -31,10 +34,11 @@ public class CatergoryAdapter extends BaseAdapter {
 	    public CatergoryAdapter(Context context) {  
 	          
 	        this.context = context;  
-	        this.layoutInflater = LayoutInflater.from(context);  
+	        this.layoutInflater = LayoutInflater.from(context); 
+	        data = new ArrayList<Category>();
 	    } 
 	    
-	    public CatergoryAdapter(Context context,ArrayList<HashMap<String, Object>> data) {  
+	    public CatergoryAdapter(Context context,ArrayList<Category> data) {  
 	          
 	        this.context = context;  
 	        this.data = data;  
@@ -44,28 +48,29 @@ public class CatergoryAdapter extends BaseAdapter {
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-//		return data.size();
-		return mImageIds.length;
+		return data.size();
+//		return mImageIds.length;
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-//		return data.get(position);
-		return 0;
+		return data.get(position);
+//		return 0;
 	}
 
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-//		return position;
-		return 0;
+		return position;
+//		return 0;
 	}
 	@SuppressWarnings("null")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder=new ViewHolder();
 		//组装数据
+		Log.i("debug","view");
 		if(convertView==null){
 //			convertView=LayoutInflater.from(context).inflate(R.layout.activity_category_item, null);
 			convertView=layoutInflater.inflate(R.layout.activity_category_item, null);
@@ -77,9 +82,14 @@ public class CatergoryAdapter extends BaseAdapter {
 		}else{
 			holder=(ViewHolder) convertView.getTag();
 		}
-		holder.image.setImageResource(mImageIds[position]);
-		holder.title.setText(mTitleValues[position]);
-		holder.content.setText(mContentValues[position]);
+		Log.i("debug","image");
+		Category ct = data.get(position);
+		ImageLoader.getInstance().displayImage(ct.getImage().getUrl(), holder.image); 
+		holder.title.setText(ct.getCname());
+		holder.content.setText(ct.getDescription());
+//		holder.image.setImageResource(mImageIds[position]);
+//		holder.title.setText(mTitleValues[position]);
+//		holder.content.setText(mContentValues[position]);
 		return convertView;
 	}
 	

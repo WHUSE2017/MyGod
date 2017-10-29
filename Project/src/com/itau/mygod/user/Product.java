@@ -1,4 +1,4 @@
-package com.itau.mygod.product;
+package com.itau.mygod.user;
 
 import java.io.File;
 
@@ -9,6 +9,9 @@ public class Product extends BmobObject{
 	private BmobFile image;
 	private String title;
 	private String price;
+	private String description;
+	private String area;
+	private String type;
 	
 	public BmobFile getImage() {	
     return image;
@@ -29,6 +32,24 @@ public class Product extends BmobObject{
 		this.price = price;
 	}
 	 public String getIconUrl() {
-		 return image.getUrl(); } 
+		 return image.getUrl(); }
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	} 
 
 }

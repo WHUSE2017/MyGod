@@ -28,7 +28,11 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 	private ExitView exit;
 	private LinearLayout Ly_login,Ly_Other;
 	private RelativeLayout Ly_personalInfo;
+<<<<<<< HEAD
+	private RelativeLayout personalOrder;
+=======
 	private RelativeLayout myorder;
+>>>>>>> 3ca326f991f769ed80235abb57e9811674989036
 	private TextView username;
 	private int LOGIN_CODE=100;
 
@@ -55,7 +59,11 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 		Ly_personalInfo=(RelativeLayout)findViewById(R.id.personal);
 		Ly_Other=(LinearLayout)findViewById(R.id.other_layout);
 		username=(TextView)findViewById(R.id.username);
+<<<<<<< HEAD
+		personalOrder=(RelativeLayout)findViewById(R.id.personal_all_order);
+=======
 		myorder=(RelativeLayout)findViewById(R.id.myorder);
+>>>>>>> 3ca326f991f769ed80235abb57e9811674989036
 	}
 
 	@Override
@@ -66,8 +74,12 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 		mLoginButton.setOnClickListener(this);
 		//mMoreButton.setOnClickListener(this);
 		mExitButton.setOnClickListener(this);
+<<<<<<< HEAD
+		personalOrder.setOnClickListener(this);
+=======
 		myorder.setOnClickListener(this);
 		
+>>>>>>> 3ca326f991f769ed80235abb57e9811674989036
 	}
 
 	@Override
@@ -80,10 +92,10 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 			startActivityForResult(mIntent, LOGIN_CODE);
 			break;
 
-		/*case R.id.personal_more_button:
-			mIntent=new Intent(PersonalActivity.this, MoreActivity.class);
+		case R.id.personal_all_order:
+			mIntent=new Intent(PersonalActivity.this, OrderActivity.class);
 			startActivity(mIntent);
-			break;*/
+			break;
 			
 		case R.id.personal_exit:
 			
