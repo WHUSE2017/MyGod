@@ -1,5 +1,7 @@
 package com.itau.mygod.bean;
 
+import com.itau.mygod.user.User;
+
 
 public class Constants {
 
@@ -27,10 +29,10 @@ public class Constants {
 	public static String clientOsVer = "";
 	public static String language = "";
 	public static String country = "";
-	public static String objectid = "";//用户唯一标识
 	public static String user = "";
 	public static String pass = "";
 	public static boolean status = false;
+	public static User userobject;
 
 	
 }

@@ -37,19 +37,17 @@
             android:textColor="@color/black" />
        
         <EditText 
+            android:id="@+id/id_username"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="35dp"
             android:hint="@string/register_normal_useraccount_hint"
             android:inputType="number"
            android:background="@drawable/category_selection_gridview_bg"
             android:layout_gravity="center_vertical"
-            />
-        
+            />        
     </LinearLayout>
-    
-   
-      <LinearLayout
+     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
@@ -61,20 +59,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/register_normal_email"
+<<<<<<< HEAD
+            android:text="@string/register_normal_useraccount_userphone"
+=======
+            android:text="@string/normal_useraccount_userphone"
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
             android:textColor="@color/black" />
        
         <EditText 
+            android:id="@+id/id_userphone"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
-            android:layout_marginLeft="35dp"
-            android:hint="@string/register_normal_email_hint"
+            android:layout_marginLeft="20dp"
+<<<<<<< HEAD
+            android:hint="@string/register_normal_useraccount_userphone_hint"
+=======
+            android:hint="@string/register_normal_useraccount_hint"
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
             android:inputType="number"
            android:background="@drawable/category_selection_gridview_bg"
             android:layout_gravity="center_vertical"
             />
         
     </LinearLayout>
+    
+   
+      
     
          <LinearLayout
         android:layout_width="fill_parent"
@@ -92,6 +102,7 @@
             android:textColor="@color/black" />
        
         <EditText 
+            android:id="@+id/id_password1"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:layout_marginLeft="35dp"
@@ -119,6 +130,7 @@
             android:textColor="@color/black" />
        
         <EditText 
+            android:id="@+id/id_password2"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:layout_marginLeft="10dp"
@@ -132,7 +144,7 @@
 
             
             <Button
-                android:id="@+id/login"
+                android:id="@+id/normalregister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

@@ -26,6 +26,14 @@ import cn.bmob.v3.listener.FindListener;
 import com.itau.jingdong.R;
 import com.itau.mygod.adapter.CatergoryAdapter;
 import com.itau.mygod.bean.Constants;
+import com.itau.mygod.category.BooksActivity;
+import com.itau.mygod.category.ClothingActivity;
+import com.itau.mygod.category.DigitActivity;
+import com.itau.mygod.category.FurnitureActivity;
+import com.itau.mygod.category.HouseholdActivity;
+import com.itau.mygod.category.LaptopActivity;
+import com.itau.mygod.category.MobilephoneActivity;
+import com.itau.mygod.category.SkinProtectionActivity;
 import com.itau.mygod.task.Callback;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.Category;
@@ -73,6 +81,45 @@ public class CategoryActivity extends BaseActivity {
 					public void onItemClick(AdapterView<?> adapterview, View view, int parent,
 							long id) {
 						Toast.makeText(CategoryActivity.this, "你点击了第"+id+"项", 1).show();
+						switch ((int)id) {
+						case 0:
+							Intent intent0=new Intent(CategoryActivity.this, HouseholdActivity.class);
+							startActivity(intent0);
+							break;
+						case 1:
+							Intent intent1=new Intent(CategoryActivity.this, BooksActivity.class);
+							startActivity(intent1);
+							break;
+						case 2:
+							Intent intent2=new Intent(CategoryActivity.this, ClothingActivity.class);
+							startActivity(intent2);
+							break;
+						case 3:
+							Intent intent3=new Intent(CategoryActivity.this, LaptopActivity.class);
+							startActivity(intent3);
+							break;
+						case 4:
+							Intent intent4=new Intent(CategoryActivity.this, DigitActivity.class);
+							startActivity(intent4);
+							break;
+						case 5:
+							Intent intent5=new Intent(CategoryActivity.this, FurnitureActivity.class);
+							startActivity(intent5);
+							break;
+						case 6:
+							Intent intent6=new Intent(CategoryActivity.this, MobilephoneActivity.class);
+							startActivity(intent6);
+							break;
+						case 7:
+							Intent intent7=new Intent(CategoryActivity.this, SkinProtectionActivity.class);
+							startActivity(intent7);
+							break;
+						default:
+							break;
+						}
+
+						
+						
 						
 					}
 				});

@@ -1,11 +1,11 @@
-package com.itau.mygod.ui;
-
+package com.itau.mygod.category;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,35 +28,35 @@ import com.itau.jingdong.R;
 import com.itau.mygod.adapter.ProductAdapter;
 import com.itau.mygod.bean.Constants;
 import com.itau.mygod.task.Callback;
+<<<<<<< HEAD
+import com.itau.mygod.ui.ProductDetailActivity;
+=======
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.Product;
 import com.itau.mygod.user.User;
 
-
-public class IndexProductActivity extends BaseActivity {
-
-	private ListView product_listview;
+public class SkinProtectionActivity extends Activity {
+	private ListView skin_protection_ListView;
 	private ArrayList<Product> data;
+<<<<<<< HEAD
 	private Intent mIntent;
-//	private LayoutInflater layoutInflater;
-	
+=======
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_index_product);
+		setContentView(R.layout.activity_skin_protection);
 		initData();
 		findViewById();
 		initView();
 	}
-
-	@Override
 	protected void findViewById() {
-		product_listview=(ListView)this.findViewById(R.id.listView1);
+		skin_protection_ListView=(ListView)this.findViewById(R.id.skin_protection_listview);
 		BmobQuery<Product> query = new BmobQuery<Product>();
-		query.order("Ctype");
+		query.order("type");
 		final ProgressDialog mPD;
-		mPD=ProgressDialog.show(IndexProductActivity.this, getTitle(), getResources().getString(R.string.product_loading), true, false);
+		mPD=ProgressDialog.show(SkinProtectionActivity.this, getTitle(), getResources().getString(R.string.category_loading), true, false);
 		query.findObjects(new FindListener<Product>() {
 			@Override
 			public void done(List<Product> object, BmobException e) {
@@ -64,16 +64,21 @@ public class IndexProductActivity extends BaseActivity {
 				if(object.size() != 0)
 				{
 					for(Product ct:object){
-						data.add(ct);
+						if(ct.getType().equals("护肤"))
+						{
+							data.add(ct);
+						}
+
 					}
 				}	
 				Log.i("debug","setAdapte");
-				product_listview.setAdapter(new ProductAdapter(IndexProductActivity.this,data,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+				skin_protection_ListView.setAdapter(new ProductAdapter(SkinProtectionActivity.this,data,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 				mPD.dismiss();
-				product_listview.setOnItemClickListener(new OnItemClickListener() {	
+				skin_protection_ListView.setOnItemClickListener(new OnItemClickListener() {	
 					@Override
 					public void onItemClick(AdapterView<?> adapterview, View view, int parent,
 							long id) {
+<<<<<<< HEAD
 						//Toast.makeText(IndexProductActivity.this, "你点击了第"+id+"项", 1).show();
 						Bundle bundle=new Bundle();
 						mIntent=new Intent();
@@ -82,18 +87,17 @@ public class IndexProductActivity extends BaseActivity {
 						bundle.putString("productPrice",data.get(Integer.parseInt(String.valueOf(id))).getPrice());
 						bundle.putString("productContent",data.get(Integer.parseInt(String.valueOf(id))).getDescription());
 						bundle.putString("productArea",data.get(Integer.parseInt(String.valueOf(id))).getArea());
-<<<<<<< HEAD
 						bundle.putString("productId",data.get(Integer.parseInt(String.valueOf(id))).getObjectId());
 						if(data.get(Integer.parseInt(String.valueOf(id))).getImage()==null)
 							bundle.putString("productImage","");
 						else
 							bundle.putString("productImage",data.get(Integer.parseInt(String.valueOf(id))).getImage().getUrl());
-=======
-						
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 						mIntent.putExtras(bundle);
-						mIntent.setClass(IndexProductActivity.this, ProductDetailActivity.class);
+						mIntent.setClass(SkinProtectionActivity.this, ProductDetailActivity.class);
 						startActivity(mIntent);
+=======
+						Toast.makeText(SkinProtectionActivity.this, "你点击了第"+id+"项", 1).show();
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 						
 					}
 				});
@@ -102,7 +106,6 @@ public class IndexProductActivity extends BaseActivity {
 	}
 	
 
-	@Override
 	protected void initView() {
 		// TODO Auto-generated method stub
 
@@ -112,7 +115,4 @@ public class IndexProductActivity extends BaseActivity {
 		data = new ArrayList<Product>();
 	}
 	
-	
-	
-
 }
