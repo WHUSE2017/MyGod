@@ -30,6 +30,7 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 	private LinearLayout Ly_login,Ly_Other;
 	private RelativeLayout Ly_personalInfo;
 	private RelativeLayout personalOrder;
+	private RelativeLayout userSafety;
 	private TextView username;
 	private int LOGIN_CODE=100;
 
@@ -57,6 +58,7 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 		Ly_Other=(LinearLayout)findViewById(R.id.other_layout);
 		username=(TextView)findViewById(R.id.username);
 		personalOrder=(RelativeLayout)findViewById(R.id.personal_all_order);
+		userSafety=(RelativeLayout)findViewById(R.id.user_safety);
 	}
 
 	@Override
@@ -68,6 +70,7 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 		//mMoreButton.setOnClickListener(this);
 		mExitButton.setOnClickListener(this);
 		personalOrder.setOnClickListener(this);
+		userSafety.setOnClickListener(this);
 	}
 
 	@Override
@@ -90,6 +93,12 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 					
 					startActivityForResult(mIntent, LOGIN_CODE);
 				}
+			break;
+			
+		case R.id.user_safety:
+			mIntent=new Intent(PersonalActivity.this, UserSafetyActivity.class);
+			
+			startActivityForResult(mIntent, LOGIN_CODE);
 			break;
 			
 		case R.id.personal_exit:
