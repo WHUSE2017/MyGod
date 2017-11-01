@@ -61,6 +61,7 @@ public class HistoryActivity extends Activity{
 	private String pic_path="";
 	private static final String IMAGE_UNSPECIFIED = "image/*";  
 	private final int IMAGE_CODE = 200; // 这里的IMAGE_CODE是自己任意定义的
+	private final int CAMERA_CODE=100;
 	private boolean isCompleted=false;
 	private static final String tag = "HistoryActivity";
 	public String salerIdString="1ab4f39828";
@@ -187,17 +188,6 @@ public class HistoryActivity extends Activity{
  					Log.e(tag, "从相册获取图片失败");
  				}
 	            String[] proj = { MediaStore.Images.Media.DATA };  
-	  
-//	            // 好像是android多媒体数据库的封装接口，具体的看Android文档  
-//	            @SuppressWarnings("deprecation")
-//				Cursor cursor = this.managedQuery(originalUri, proj, null, null, null);  
-//	            //===============wtt
-//	            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);  
-//	            // 将光标移至开头 ，这个很重要，不小心很容易引起越界  
-//	            cursor.moveToFirst();  
-//	            // 最后根据索引值获取图片路径  
-//
-//	            cursor.close();
 	            
 	            //.setText(path);  
 	        } catch (IOException e) {  
@@ -209,6 +199,9 @@ public class HistoryActivity extends Activity{
 	                return;  
 	            }  
 	        }  
+	    
+	    
+	    
 	       
 	  
 	    } 

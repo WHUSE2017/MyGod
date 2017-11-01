@@ -432,12 +432,19 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 				break;
 			}
 			else {
+<<<<<<< HEAD
+				Toast.makeText(getBaseContext(), "您还未登录，请先登录！", Toast.LENGTH_SHORT).show();
+=======
 				Toast.makeText(getBaseContext(), "请先登录！", Toast.LENGTH_SHORT).show();
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 				mIntent=new Intent(IndexActivity.this, LoginActivity.class);
 				startActivity(mIntent);
 				break;
 			}
+<<<<<<< HEAD
+=======
 
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 			
 		case R.id.index_shake:
 			try{
