@@ -26,7 +26,7 @@
         <RadioGroup
             android:id="@+id/home_radio_button_group"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:background="@drawable/main_navigation_background"
             android:gravity="center_vertical"
