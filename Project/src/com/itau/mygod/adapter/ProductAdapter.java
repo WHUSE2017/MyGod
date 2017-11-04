@@ -23,8 +23,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class ProductAdapter extends BaseAdapter {
 
 	 private ArrayList<Product> data; 
-	 private int parant_width;
-	 private int parant_height;
+	 private int parant_width =0;
+	 int layoutId;
+	 private int parant_height =0;
 	    /** 
 	     * LayoutInflater 类是代码实现中获取布局文件的主要形式 
 	     *LayoutInflater layoutInflater = LayoutInflater.from(context); 
@@ -37,27 +38,30 @@ public class ProductAdapter extends BaseAdapter {
 	    private Context context;  
 	      
 	    
-	    public ProductAdapter(Context context) {  
+	    public ProductAdapter(Context context,int layoutId) {  
 	          
 	        this.context = context;  
 	        this.layoutInflater = LayoutInflater.from(context); 
 	        data = new ArrayList<Product>();
+	        this.layoutId = layoutId;
 	    } 
 	    
-	    public ProductAdapter(Context context,ArrayList<Product> data) {  
+	    public ProductAdapter(Context context,int layoutId,ArrayList<Product> data) {  
 	          
 	        this.context = context;  
 	        this.data = data;  
-	        this.layoutInflater = LayoutInflater.from(context);  
+	        this.layoutInflater = LayoutInflater.from(context); 
+	        this.layoutId = layoutId;
 	    } 
 	    
-	    public ProductAdapter(Context context,ArrayList<Product> data,int width,int height) {  
+	    public ProductAdapter(Context context,int layoutId,ArrayList<Product> data,int width,int height) {  
 	          
 	        this.context = context;  
 	        this.data = data;  
 	        this.layoutInflater = LayoutInflater.from(context);  
 	        this.parant_width = width;
 	        this.parant_height = height;
+	        this.layoutId = layoutId;
 	    }
 	
 	@Override
@@ -85,16 +89,31 @@ public class ProductAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder=new ViewHolder();
 		//组装数据
-		LayoutParams lp = new LayoutParams(parant_width/4,parant_height/8);
+		LayoutParams lp;
+		if(parant_width==0||parant_height==0)
+			lp=null;
+		else
+			lp = new LayoutParams(parant_width/4,parant_height/8);
 		Log.i("debug","view");
 		if(convertView==null){
 //			convertView=LayoutInflater.from(context).inflate(R.layout.activity_category_item, null);
-			convertView=layoutInflater.inflate(R.layout.activity_product_item, null);
+			convertView=layoutInflater.inflate(layoutId, null);
+			switch(layoutId){
+			case R.layout.activity_product_item:
 			holder.image=(ImageView) convertView.findViewById(R.id.product_image);
 			holder.title=(TextView) convertView.findViewById(R.id.productitem_title);
 			holder.content=(TextView) convertView.findViewById(R.id.productitem_price);
 			//使用tag存储数据
 			convertView.setTag(holder);
+			break;
+			case R.layout.activity_index_gallery_item:
+				holder.image=(ImageView) convertView.findViewById(R.id.index_gallery_item_image);
+				holder.title=(TextView) convertView.findViewById(R.id.index_gallery_item_title);
+				holder.content=(TextView) convertView.findViewById(R.id.index_gallery_item_price);
+				//使用tag存储数据
+				convertView.setTag(holder);
+				break;
+			}
 		}else{
 			holder=(ViewHolder) convertView.getTag();
 		}
@@ -106,12 +125,11 @@ public class ProductAdapter extends BaseAdapter {
 			holder.image.setImageResource(R.drawable.default_image);
 		}
 		holder.image.setScaleType(ImageView.ScaleType.FIT_XY);
+		if(lp!=null)
 		holder.image.setLayoutParams(lp);
 		holder.title.setText(ct.getTitle());
 		holder.content.setText(ct.getPrice());
-//		holder.image.setImageResource(mImageIds[position]);
-//		holder.title.setText(mTitleValues[position]);
-//		holder.content.setText(mContentValues[position]);
+
 		return convertView;
 	}
 	

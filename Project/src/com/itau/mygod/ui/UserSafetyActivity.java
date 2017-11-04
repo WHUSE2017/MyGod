@@ -78,8 +78,13 @@ public class UserSafetyActivity extends BaseActivity implements OnClickListener 
 		logoutIntent.setClass(UserSafetyActivity.this,PersonalActivity.class);
 		logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 		Constants.status = false;
-        startActivity(logoutIntent);
-		
+		Toast.makeText(UserSafetyActivity.this,"用户已注销！",Toast.LENGTH_SHORT).show();
+//        startActivity(logoutIntent);
+		Intent intent = new Intent();  
+		intent.setAction(TAG);  
+		setResult(10,intent); 
+		sendBroadcast(intent);
+		finish();
 		}
 		}
 	

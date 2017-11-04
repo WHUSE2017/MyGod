@@ -1,5 +1,6 @@
 package com.itau.mygod.bean;
 
+import com.itau.mygod.user.Message;
 import com.itau.mygod.user.User;
 
 
@@ -33,6 +34,7 @@ public class Constants {
 	public static String pass = "";
 	public static boolean status = false;
 	public static User userobject;
+	public static Message messageobject;
 
 	
 }

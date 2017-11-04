@@ -54,7 +54,8 @@ public class IndexProductActivity extends BaseActivity {
 	protected void findViewById() {
 		product_listview=(ListView)this.findViewById(R.id.listView1);
 		BmobQuery<Product> query = new BmobQuery<Product>();
-		query.order("Ctype");
+		query.include("salerId");
+		query.order("-createdAt");
 		final ProgressDialog mPD;
 		mPD=ProgressDialog.show(IndexProductActivity.this, getTitle(), getResources().getString(R.string.product_loading), true, false);
 		query.findObjects(new FindListener<Product>() {
@@ -68,11 +69,11 @@ public class IndexProductActivity extends BaseActivity {
 					}
 				}	
 				Log.i("debug","setAdapte");
-				product_listview.setAdapter(new ProductAdapter(IndexProductActivity.this,data,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+				product_listview.setAdapter(new ProductAdapter(IndexProductActivity.this,R.layout.activity_product_item,data,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 				mPD.dismiss();
 				product_listview.setOnItemClickListener(new OnItemClickListener() {	
 					@Override
-					public void onItemClick(AdapterView<?> adapterview, View view, int parent,
+			 public void onItemClick(AdapterView<?> adapterview, View view, int parent,
 							long id) {
 						//Toast.makeText(IndexProductActivity.this, "你点击了第"+id+"项", 1).show();
 						Bundle bundle=new Bundle();
@@ -82,15 +83,12 @@ public class IndexProductActivity extends BaseActivity {
 						bundle.putString("productPrice",data.get(Integer.parseInt(String.valueOf(id))).getPrice());
 						bundle.putString("productContent",data.get(Integer.parseInt(String.valueOf(id))).getDescription());
 						bundle.putString("productArea",data.get(Integer.parseInt(String.valueOf(id))).getArea());
-<<<<<<< HEAD
 						bundle.putString("productId",data.get(Integer.parseInt(String.valueOf(id))).getObjectId());
+						bundle.putString("productSalerIdPhone", data.get(Integer.parseInt(String.valueOf(id))).getSalerId().getPhone());
 						if(data.get(Integer.parseInt(String.valueOf(id))).getImage()==null)
 							bundle.putString("productImage","");
 						else
 							bundle.putString("productImage",data.get(Integer.parseInt(String.valueOf(id))).getImage().getUrl());
-=======
-						
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 						mIntent.putExtras(bundle);
 						mIntent.setClass(IndexProductActivity.this, ProductDetailActivity.class);
 						startActivity(mIntent);

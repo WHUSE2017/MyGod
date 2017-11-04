@@ -12,6 +12,7 @@ public class Product extends BmobObject{
 	private String description;
 	private String area;
 	private String type;
+	private int status;
 	private User salerId;
 	
 	public BmobFile getImage() {	
@@ -57,6 +58,12 @@ public class Product extends BmobObject{
 	}
 	public void setSalerId(User salerId) {
 		this.salerId = salerId;
-	} 
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 }
