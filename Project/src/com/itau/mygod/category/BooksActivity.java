@@ -28,11 +28,8 @@ import com.itau.jingdong.R;
 import com.itau.mygod.adapter.ProductAdapter;
 import com.itau.mygod.bean.Constants;
 import com.itau.mygod.task.Callback;
-<<<<<<< HEAD
 import com.itau.mygod.ui.IndexProductActivity;
 import com.itau.mygod.ui.ProductDetailActivity;
-=======
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.Product;
 import com.itau.mygod.user.User;
@@ -40,10 +37,7 @@ import com.itau.mygod.user.User;
 public class BooksActivity extends Activity {
 	private ListView books_ListView;
 	private ArrayList<Product> data;
-<<<<<<< HEAD
 	private Intent mIntent;
-=======
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,7 +49,7 @@ public class BooksActivity extends Activity {
 	protected void findViewById() {
 		books_ListView=(ListView)this.findViewById(R.id.books_listview);
 		BmobQuery<Product> query = new BmobQuery<Product>();
-		query.order("type");
+		query.order("-createdAt");
 		final ProgressDialog mPD;
 		mPD=ProgressDialog.show(BooksActivity.this, getTitle(), getResources().getString(R.string.category_loading), true, false);
 		query.findObjects(new FindListener<Product>() {
@@ -79,7 +73,6 @@ public class BooksActivity extends Activity {
 					@Override
 					public void onItemClick(AdapterView<?> adapterview, View view, int parent,
 							long id) {
-<<<<<<< HEAD
 						//Toast.makeText(IndexProductActivity.this, "你点击了第"+id+"项", 1).show();
 						Bundle bundle=new Bundle();
 						mIntent=new Intent();
@@ -96,9 +89,6 @@ public class BooksActivity extends Activity {
 						mIntent.putExtras(bundle);
 						mIntent.setClass(BooksActivity.this, ProductDetailActivity.class);
 						startActivity(mIntent);
-=======
-						Toast.makeText(BooksActivity.this, "你点击了第"+id+"项", 1).show();
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 						
 					}
 				});
