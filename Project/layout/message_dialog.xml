@@ -9,7 +9,7 @@
         android:layout_height="120dp"
         android:background="@null"
         android:layout_width="match_parent"
-        android:hint="内容，100字以内"
+        android:hint="留言，100字以内"
         android:maxLines="30"
         android:gravity="top"
         android:padding="10dp"
@@ -36,15 +36,16 @@
             >
            <Button
                android:id="@+id/cancel"
-               android:background="@drawable/horn_clean"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:textSize="12sp"
                android:text="取消"/>
+           
             <Button
-                android:id="@+id/Determine"
-                android:background="@drawable/horn"
+                android:id="@+id/Determine"                
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="12sp"
                 android:text="确定"/>
 
 
