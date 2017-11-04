@@ -54,7 +54,11 @@ public class IndexProductActivity extends BaseActivity {
 	protected void findViewById() {
 		product_listview=(ListView)this.findViewById(R.id.listView1);
 		BmobQuery<Product> query = new BmobQuery<Product>();
+<<<<<<< HEAD
 		query.include("salerId");
+=======
+		//query.order("Ctype");
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 		query.order("-createdAt");
 		final ProgressDialog mPD;
 		mPD=ProgressDialog.show(IndexProductActivity.this, getTitle(), getResources().getString(R.string.product_loading), true, false);

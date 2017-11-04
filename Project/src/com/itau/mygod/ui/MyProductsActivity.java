@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package com.itau.mygod.ui;
+=======
+package com.itau.jingdong;
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 
 import java.util.List;
 
@@ -13,7 +17,10 @@ import com.itau.mygod.ui.ProductDetailActivity;
 import com.itau.mygod.user.Order;
 import com.itau.mygod.user.Product;
 import com.nostra13.universalimageloader.core.ImageLoader;
+<<<<<<< HEAD
 import com.itau.jingdong.R;
+=======
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 
 import android.app.Activity;
 import android.app.AlertDialog;

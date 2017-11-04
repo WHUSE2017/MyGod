@@ -6,7 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
 import com.itau.mygod.ui.MyProductsActivity;
+=======
+import com.itau.jingdong.MyProductsActivity;
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 import com.itau.jingdong.R;
 import com.itau.mygod.adapter.ProductAdapter;
 import com.itau.mygod.bean.Constants;
@@ -53,6 +57,10 @@ IPopupItemClick, OnItemClickListener,OnItemLongClickListener{
 	//private OrderActivity orderActivity=null;
 	private SimpleAdapter adapter;
  	private List<Map<String,Object>> datalist;
+<<<<<<< HEAD
+=======
+	private ArrayList<Product> data;
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 	private Intent mIntent;
 	private Button layout_buy;
 	private Button layout_sale;
@@ -101,7 +109,11 @@ IPopupItemClick, OnItemClickListener,OnItemLongClickListener{
    public void initListeners() {
 
 	   listview.setOnItemLongClickListener(this);
+<<<<<<< HEAD
 	   seeOrderDetail();
+=======
+	   listview.setOnItemClickListener(this);
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 	   layout_all.setOnClickListener(this);
    }
    
@@ -177,6 +189,7 @@ IPopupItemClick, OnItemClickListener,OnItemLongClickListener{
 		} else if(v == layout_sale) {
 			tv_buyer.setTag("Sale");
 			tv_buyer.setText("我已卖出");
+<<<<<<< HEAD
 		}
 		else if (v == Layout_going_buy) {
 			tv_buyer.setTag("BuyGoing");
@@ -189,6 +202,20 @@ IPopupItemClick, OnItemClickListener,OnItemLongClickListener{
 			tv_buyer.setTag("ProductOnLine");
 			tv_buyer.setText("我的架上商品");
 		}
+=======
+		}
+		else if (v == Layout_going_buy) {
+			tv_buyer.setTag("BuyGoing");
+			tv_buyer.setText("我的订购单");
+		} else if(v==layout_going_sale) {
+			tv_buyer.setTag("SaleGoing");
+			tv_buyer.setText("待处理订单");
+		}else if(v==layout_mypro){
+			Log.i("zyg", "进入changeTextView");
+			tv_buyer.setTag("ProductOnLine");
+			tv_buyer.setText("我的架上商品");
+		}
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 		
 		
 	}
@@ -398,6 +425,7 @@ IPopupItemClick, OnItemClickListener,OnItemLongClickListener{
 	
 	
 	
+<<<<<<< HEAD
 
 	//从云端加载我买到的商品
 	
@@ -439,6 +467,49 @@ IPopupItemClick, OnItemClickListener,OnItemLongClickListener{
 	public List<Map<String,Object>> getProSale(){
 		
 
+=======
+
+	//从云端加载我买到的商品
+	
+	public List<Map<String,Object>> getProBuy(){
+		datalist.clear();
+ 		BmobQuery<Order> query = new BmobQuery<Order>();
+ 		//order 0:取消 1:正在进行 2:交易成功
+ 		query.addWhereEqualTo("status", 2);
+ 		query.addWhereEqualTo("buyerId", Constants.userobject);
+ 		query.order("createAt");
+ 		//query.setLimit(50);
+ 		query.findObjects(new FindListener<Order>() 
+ 		{
+ 			@Override
+ 			public void done(List<Order> object, BmobException e)
+ 			{
+ 				Log.i("debug",""+object.size());
+ 				for (Order order : object)
+ 				{
+ 					Map<String,Object> map = new HashMap<String, Object>();
+ 					map.put("description", order.getDescription());
+ 					map.put("title", order.getTitle());
+ 					map.put("price", order.getPrice());
+ 					map.put("area", order.getArea());
+ 					map.put("phone",order.getPhone());
+ 					map.put("pId", order.getPId());
+ 					datalist.add(map);		               
+ 		         }
+ 				adapter.notifyDataSetChanged();				
+ 			}
+ 	
+ 		});		
+ 		
+ 		return datalist;
+ 	}
+	
+	//从云端加载我卖出的商品
+	
+	public List<Map<String,Object>> getProSale(){
+		
+
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 		datalist.clear();
 		
  		BmobQuery<Product> query = new BmobQuery<Product>();
@@ -560,6 +631,7 @@ IPopupItemClick, OnItemClickListener,OnItemLongClickListener{
 		// TODO Auto-generated method stub
 
 		
+<<<<<<< HEAD
 //		listview.setAdapter(new ProductAdapter(OrderActivity.this,R.layout.activity_product_item,data,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 //		morePop.dismiss();
 		listview.setOnItemClickListener(new OnItemClickListener() {	
@@ -609,6 +681,30 @@ IPopupItemClick, OnItemClickListener,OnItemLongClickListener{
 					mIntent.setClass(OrderActivity.this, MyProductsActivity.class);
 					startActivity(mIntent);
 			}
+=======
+		listview.setAdapter(new ProductAdapter(OrderActivity.this,data,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+		morePop.dismiss();
+		listview.setOnItemClickListener(new OnItemClickListener() {	
+			@Override
+			public void onItemClick(AdapterView<?> adapterview, View view, int parent,
+					long id) {
+				Toast.makeText(OrderActivity.this, "你点击了第"+id+"项", 1).show();
+				Bundle bundle=new Bundle();
+				mIntent=new Intent();
+
+				bundle.putString("productTitle",data.get(Integer.parseInt(String.valueOf(id))).getTitle());
+				bundle.putString("productPrice",data.get(Integer.parseInt(String.valueOf(id))).getPrice());
+				bundle.putString("productContent",data.get(Integer.parseInt(String.valueOf(id))).getDescription());
+				bundle.putString("productArea",data.get(Integer.parseInt(String.valueOf(id))).getArea());
+				//bundle.putString("productId",data.get(Integer.parseInt(String.valueOf(id))).getObjectId());
+				if(data.get(Integer.parseInt(String.valueOf(id))).getImage()==null)
+					bundle.putString("productImage","");
+				else
+					bundle.putString("productImage",data.get(Integer.parseInt(String.valueOf(id))).getImage().getUrl());
+				mIntent.putExtras(bundle);
+				mIntent.setClass(OrderActivity.this, OrderDetailActivity.class);
+				startActivity(mIntent);
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 				
 			}
 		});

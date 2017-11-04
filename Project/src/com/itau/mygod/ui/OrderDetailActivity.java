@@ -2,7 +2,11 @@ package com.itau.mygod.ui;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import com.itau.mygod.ui.MyProductsActivity;
+=======
+import com.itau.jingdong.MyProductsActivity;
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 import com.itau.jingdong.R;
 import com.itau.jingdong.R.drawable;
 import com.itau.jingdong.R.id;

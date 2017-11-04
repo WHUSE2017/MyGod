@@ -48,7 +48,10 @@ public class HouseholdActivity extends Activity {
 	protected void findViewById() {
 		household_ListView=(ListView)this.findViewById(R.id.household_listview);
 		BmobQuery<Product> query = new BmobQuery<Product>();
+<<<<<<< HEAD
 		query.include("salerId");
+=======
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 		query.order("-createdAt");
 		final ProgressDialog mPD;
 		mPD=ProgressDialog.show(HouseholdActivity.this, getTitle(), getResources().getString(R.string.category_loading), true, false);
