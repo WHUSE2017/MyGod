@@ -56,7 +56,7 @@ public class IndexProductActivity extends BaseActivity {
 		BmobQuery<Product> query = new BmobQuery<Product>();
 		query.order("Ctype");
 		final ProgressDialog mPD;
-		mPD=ProgressDialog.show(IndexProductActivity.this, getTitle(), getResources().getString(R.string.category_loading), true, false);
+		mPD=ProgressDialog.show(IndexProductActivity.this, getTitle(), getResources().getString(R.string.product_loading), true, false);
 		query.findObjects(new FindListener<Product>() {
 			@Override
 			public void done(List<Product> object, BmobException e) {
@@ -82,7 +82,15 @@ public class IndexProductActivity extends BaseActivity {
 						bundle.putString("productPrice",data.get(Integer.parseInt(String.valueOf(id))).getPrice());
 						bundle.putString("productContent",data.get(Integer.parseInt(String.valueOf(id))).getDescription());
 						bundle.putString("productArea",data.get(Integer.parseInt(String.valueOf(id))).getArea());
+<<<<<<< HEAD
+						bundle.putString("productId",data.get(Integer.parseInt(String.valueOf(id))).getObjectId());
+						if(data.get(Integer.parseInt(String.valueOf(id))).getImage()==null)
+							bundle.putString("productImage","");
+						else
+							bundle.putString("productImage",data.get(Integer.parseInt(String.valueOf(id))).getImage().getUrl());
+=======
 						
+>>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 						mIntent.putExtras(bundle);
 						mIntent.setClass(IndexProductActivity.this, ProductDetailActivity.class);
 						startActivity(mIntent);

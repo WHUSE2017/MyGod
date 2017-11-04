@@ -144,14 +144,14 @@
                     android:id="@+id/jobtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="金牌用户"
+                    android:text="学生"
                     android:textColor="#FFF8E8" />
 
                 <TextView
                     android:id="@+id/dept"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="积分   100"
+                    android:text="电子钱包   100.0"
                     android:textColor="#FFF8E8" />
             </LinearLayout>
         </RelativeLayout>
@@ -248,7 +248,7 @@
 
                         <View style="@style/PersonalLine" />
 
-                        <RelativeLayout style="@style/PersonalBottomStyle" >
+                        <RelativeLayout android:id="@+id/personal_all_order" style="@style/PersonalBottomStyle" >
 
                             <ImageView
                                 android:id="@+id/personal_icon_03"

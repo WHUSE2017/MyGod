@@ -193,7 +193,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/app_home_shortcuts_button_selector"
-                            android:src="@drawable/shortcuts_icon_life_journey" />
+                            android:src="@drawable/shortcuts_icon_promotion" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -227,17 +227,7 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="15dp"
-                    android:drawableLeft="@drawable/home_slide_promotion"
-                    android:drawablePadding="10dp"
-                    android:text="@string/index_notify_info"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/small_text_size" />
+                
 
                 <ImageView
                     android:layout_width="match_parent"
