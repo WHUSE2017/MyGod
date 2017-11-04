@@ -62,15 +62,8 @@
     <string name="personal_favour_introduce">小米6是不错的手机</string>
     <string name="personal_quit">退出登录</string>
     <!-- 个人中心 -->
-    <!-- 商品发布 -->
-    <string name="oldthings">晒二手</string>
-    <string name="product_name">商品名称</string>
-    <string name="product_class">商品分类</string>
-    <string name="product_price">商品价格</string>
-    <string name="product_camera">请拍照或上传图片</string>
-    <string name="product_area">交易地点</string>
-    <string name="product_description">商品描述</string>
-    <!-- 商品发布 -->
+
+
     <!-- 登陆界面 -->
     <string name="login">登录</string>
     <string name="loginacount">学号：</string>
@@ -84,6 +77,7 @@
     <string name="usecooperationaccount">用合作网站帐户登录</string>
     <string name="registerfree">注册</string>
     <string name="login_loading">正在登錄，請稍候。。</string>
+    <string name="category_loading">正在加载分类，請稍候。。</string>
 
     <!-- 购物车 -->
     <string name="cart">购物车</string>
@@ -102,6 +96,26 @@
     <string name="register_normal_password_hint">请输入密码</string>
     <string name="register_normal_repassword">确认密码：</string>
     <string name="register_normal_repassword_hint">请输入确认密码</string>
+
+    <!-- 商品发布 -->
+    <string name="oldthings">晒二手</string>
+    <string name="product_name">商品名称</string>
+    <string name="product_class">商品分类</string>
+    <string name="product_price">商品价格</string>
+    <string name="product_camera">请拍照或上传图片</string>
+    <string name="product_area">交易地点</string>
+    <string name="product_description">商品描述</string>
+
+    <!-- 产品分类 -->
+    <string name="household">家电</string>
+    <string name="books">图书</string>
+    <string name="clothing">衣服</string>
+    <string name="laptop">笔记本</string>
+    <string name="digit">数码</string>
+    <string name="furniture">家具</string>
+    <string name="mobilephone">手机</string>
+    <string name="skin_protection">商品描述</string>
+    
 
     <!-- 导航栏的其他的标题和其他 -->
     <string name="clothingcity">查看商品</string>
@@ -127,8 +141,14 @@
     </string-array>
     <!-- JazzyViewPager -->
 
-    <string name="title_activity_history">HistoryActivity</string>
+    <string name="title_activity_household">HouseholdActivity</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_books">BooksActivity</string>
+    <string name="title_activity_clothing">ClothingActivity</string>
+    <string name="title_activity_laptop">LaptopActivity</string>
+    <string name="title_activity_digit">DigitActivity</string>
+    <string name="title_activity_furniture">FurnitureActivity</string>
+    <string name="title_activity_mobilephone">MobilephoneActivity</string>
+    <string name="title_activity_skin_protection">SkinProtectionActivity</string>
 
 </resources>

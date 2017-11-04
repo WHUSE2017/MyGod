@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="ac_background">#f6f5f5</color>
+    <color name="ac_bottom_bar">#3c3c3c</color>
+    <color name="ac_bg_side_nav_actions">#252932</color>
+    <color name="text_navigation_title">#ffffff</color>
     <color name="white">#ffffff</color>
-    <!-- 白色 -->
-    <color name="ivory">#fffff0</color>
-    <!-- 象牙色 -->
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="bg_comment_list_item">#f6f5f5</color>
+    <color name="bg_comment_list_item_highlight">#ffffff</color>
+    <color name="text_gray">#969696</color>
+    <color name="bg_exhibition_desc">#f3f2ed</color>
+    <color name="guide_color">#898989</color>
+    
+    <!-- 描边颜色 -->
+    <color name="border_clo">#ccc</color>
+    <color name="text_clo">#333</color>    
+
+    <!-- V2.0 -->
+    <color name="base_actionbar_bg">#eb4e3d</color>
+    <color name="base_action_bar_title_color">#ffffff</color>
+    <color name="base_tab_indicator_text_color">#f82c22</color>
+    <color name="base_menu_left_bg">#393c44</color>
+    <color name="pull_refresh_textview">#000000</color>
+    <color name="base_color_text_black">#3e3e39</color>
+    <color name="base_color_text_gray">#898989</color>
+    <color name="home_item_color_bg">#f4f6f6</color>
+    <color name="base_bg">#f4f6f6</color>
+    <color name="green">#5cbe6c</color>
+    <!-- start zxing -->
+    <color name="viewfinder_frame">#2477ab</color>
+    <color name="backColor">#2000</color>
+    <color name="blue">#419DE4</color>
+    <!-- 蓝色 -->
+    <!-- zxing -->
+    <color name="result_view">#b0000000</color>
+    <color name="color_half_transparent">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="color_transparent_bg">#80000000</color>
+    <color name="color_transparent_bg1">#e0000000</color>
+    <!-- emot -->
+    <color name="msg_emote_divider">#ffa1a1a1</color>
+    <!-- trend -->
+    <color name="trend_bottom_bg">#f7f7f7</color>
     <color name="lightyellow">#ffffe0</color>
     <!-- 亮黄色 -->
     <color name="yellow">#ffff00</color>
@@ -40,10 +80,10 @@
     <color name="pink">#ffc0cb</color>
     <!-- 粉红色 -->
     <color name="lightpink">#ffb6c1</color>
-   
-<!--     金黄色 -->
+
+    <!-- 金黄色 -->
     <color name="goldyellow">#ff9428</color>
-     <!-- 亮粉红色 -->
+    <!-- 亮粉红色 -->
     <color name="orange">#ffa500</color>
     <!-- 橙色 -->
     <color name="lightsalmon">#ffa07a</color>
@@ -282,32 +322,20 @@
     <!-- 暗青色 -->
     <color name="teal">#008080</color>
     <!-- 水鸭色 -->
-    <color name="green">#008000</color>
-    <!-- 绿色 -->
     <color name="darkgreen">#006400</color>
     <!-- 暗绿色 -->
-    <color name="blue">#0000ff</color>
-    <!-- 蓝色 -->
+
     <color name="mediumblue">#0000cd</color>
     <!-- 中兰色 -->
     <color name="darkblue">#00008b</color>
     <!-- 暗蓝色 -->
     <color name="navy">#000080</color>
     <!-- 海军色 -->
-    
-    <color name="black">#000</color>
-    <color name="transparent">#0000</color>
-    
+
     <color name="detail_bgColor">#f5f5f5</color>
-    
     <color name="defaultTextColor">#666</color>
-    
+
     <!-- start zxing -->
-    <color name="viewfinder_frame">#2477ab</color>
-    <color name="viewfinder_mask">#60000000</color>
-    <color name="possible_result_points">#c0ffff00</color>
-    <color name="result_view">#b0000000</color>
-    <color name="backColor">#2000</color>
     <color name="limit_buy_border_bg">#ffd4bc77</color>
     <color name="search_toolbar_bg">#ff484B50</color>
     <color name="toast_color">#ff2E76B9</color>

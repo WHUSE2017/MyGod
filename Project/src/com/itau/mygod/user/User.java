@@ -8,6 +8,7 @@ import cn.bmob.v3.BmobObject;
 public class User extends BmobObject {
 	private String name;
 	private String passwd;
+	private String phone;
 	public String getName() {
 		return name;
 	}
@@ -19,6 +20,12 @@ public class User extends BmobObject {
 	}
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 }
