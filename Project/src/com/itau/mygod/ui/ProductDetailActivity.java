@@ -9,6 +9,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 import com.itau.jingdong.R;
 
@@ -25,11 +26,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.LinearLayout.LayoutParams;
 
-<<<<<<< HEAD
 import com.itau.mygod.bean.Constants;
-=======
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 import com.itau.mygod.user.Product;
 import com.itau.mygod.user.Order;
 import com.itau.mygod.user.User;
@@ -41,20 +40,13 @@ public class ProductDetailActivity extends Activity implements OnClickListener{
 	private static final String Tag="ProductDeatilActivity";
 	private ProductDetailActivity productBuyActivity=null;
 	private Button productBuy;
-<<<<<<< HEAD
 	private ImageView productImage;
-=======
-	ImageView productImage;
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	private String productTitle;
 	private String productPrice;
 	private String productContent;
 	private String productArea;
-<<<<<<< HEAD
 	private String productId;
 	private String productImageUrl;
-=======
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -77,13 +69,8 @@ public class ProductDetailActivity extends Activity implements OnClickListener{
 		productContent=bundle.getString("productContent");
 		tv_Content.setText(productContent);
 		productArea=bundle.getString("productArea");
-<<<<<<< HEAD
 		productId = bundle.getString("productId");
 		productImageUrl = bundle.getString("productImage");
-=======
-		
-		
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 		initView();
 	}
 	
@@ -99,6 +86,7 @@ public class ProductDetailActivity extends Activity implements OnClickListener{
 		}else{
 			ImageLoader.getInstance().displayImage(productImageUrl, productImage);
 		}
+		productImage.setLayoutParams(new LayoutParams(getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()/4*3));
 	}
 
 	
@@ -107,49 +95,24 @@ public class ProductDetailActivity extends Activity implements OnClickListener{
 		
 		new AlertDialog.Builder(ProductDetailActivity.this).setTitle("系统提示")//设置对话框标题  
 		  
-	     .setMessage("确定提交订单吗")//设置显示的内容  
+	     .setMessage("确定下架该商品吗？")//设置显示的内容  
 	  
 	     .setPositiveButton("确定",new DialogInterface.OnClickListener() {//添加确定按钮  
 	   
 	         @Override  
 	  
 	         public void onClick(DialogInterface dialog, int which) {//确定按钮的响应事件  
-	        	 
-	        	 /**
-	        	  * 这里要查询User表中的电话号码
-	        	  
-	        	 Product product=new Product();
-	        	 
-	        	 BmobQuery<Product> query=new BmobQuery<Product>();
-	        	 query.addWhereEqualTo("title",productTitle);
-	        	 query.include("salerId");
-	        	 query.findObjects(this,new FindListener<Product>(){
-	        		 
-	        		 public void onSuccess(List<Product> object){
-	        			 User user=BmobUser.getCurrentUser(this, User.class);
-	        			 product.getSalerId.getPhone();
-	        		 }
-	        		 public void onError(int code, String msg){
-	        			 Toast.makeText(getBaseContext(), "查询失败", Toast.LENGTH_SHORT).show();
-	        		 }
-	        		 
-	        	 });
-	        	*/
 	           
 	        	 Order order=new Order();
 	        	 order.setTitle(productTitle);
 	        	 order.setPrice(productPrice);
 	        	 order.setArea(productArea);
-<<<<<<< HEAD
 	        	 order.setBuyerId(Constants.userobject);
 	        	 Product product = new Product();
 	        	 product.setObjectId(productId);
 	        	 order.setPId(product);
-=======
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	        	 order.setDescription(productContent);
 	        	 order.setStatus(1);
-	        	 
 	        	 order.save(new SaveListener<String>(){
 	        		 
 						@Override
@@ -159,7 +122,22 @@ public class ProductDetailActivity extends Activity implements OnClickListener{
 							
 						}
 	        	 });
-
+	        	 
+	        	 Product productUpdate=new Product();
+	        	 productUpdate.setStatus(2);
+	        	 productUpdate.update(productId, new UpdateListener() {
+					
+					@Override
+					public void done(BmobException e) {
+						// TODO Auto-generated method stub
+	        	         if(e==null){
+       	                   Log.i("bmob","更新成功");
+       	                 }else{
+       	                   Log.i("bmob","更新失败："+e.getMessage()+","+e.getErrorCode());
+       	                 }
+					}
+				});
+	        	
 	        	//跳转到订单页
 		        startActivity(new Intent(ProductDetailActivity.this, OrderActivity.class));
 		        //ProductDetailActivity.this.finish();
@@ -176,16 +154,12 @@ public class ProductDetailActivity extends Activity implements OnClickListener{
 			}//返回按钮       
 	  
 	     }).show();
-<<<<<<< HEAD
 		}else{
 			Toast.makeText(getBaseContext(), "请先登录！", Toast.LENGTH_LONG).show();
 			Intent mIntent=new Intent(ProductDetailActivity.this, LoginActivity.class);
 			
 			startActivityForResult(mIntent, 100);
 		}
-=======
-	  
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	 }  	
 	
 	@Override

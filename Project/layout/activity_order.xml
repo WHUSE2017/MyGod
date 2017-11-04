@@ -12,7 +12,7 @@
         android:layout_weight="1.0" >
 
         <ListView
-            android:id="@+id/list_buyer"
+            android:id="@+id/list_orders"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
         </ListView>

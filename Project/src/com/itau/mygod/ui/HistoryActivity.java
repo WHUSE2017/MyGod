@@ -1,9 +1,17 @@
 package com.itau.mygod.ui;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.PublicKey;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.security.auth.Destroyable;
 
@@ -14,10 +22,13 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Layout;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,12 +54,14 @@ import com.itau.mygod.bean.Constants;
 import com.itau.mygod.ui.IndexShakeActivity;
 import com.itau.mygod.user.Product;
 import com.itau.mygod.user.User;
+import com.itau.mygod.utils.BitmapCompressUtils;
 
 public class HistoryActivity extends Activity{
 	
 	private EditText product_name, product_price,product_description;
 	private Spinner product_class,product_area;
-	private ImageButton product_image;
+	//private ImageButton product_image;
+	//private Layout product_pic;
 	private ImageView product_view;
 	private Button product_submit;
 	private Activity historyActivity;
@@ -59,6 +72,7 @@ public class HistoryActivity extends Activity{
 	private String productDescription;
 	private String productArea;
 	private String pic_path="";
+	 private String fileName="";
 	private static final String IMAGE_UNSPECIFIED = "image/*";  
 	private final int IMAGE_CODE = 200; // 这里的IMAGE_CODE是自己任意定义的
 	private final int CAMERA_CODE=100;
@@ -72,8 +86,9 @@ public class HistoryActivity extends Activity{
 		product_name=(EditText) findViewById(R.id.product_name_text);
 		product_class=(Spinner) findViewById(R.id.product_class_spinner);
 		product_price=(EditText) findViewById(R.id.product_price_text);
-		product_image=(ImageButton) findViewById(R.id.product_camer_button);
+		//product_image=(ImageButton) findViewById(R.id.product_camer_button);
 		product_view=(ImageView) findViewById(R.id.set_pic);
+		
 		product_submit=(Button) findViewById(R.id.product_submit_button);
 		product_description=(EditText) findViewById(R.id.product_description_text);
 		product_area=(Spinner) findViewById(R.id.product_area_spinner);
@@ -107,8 +122,10 @@ public class HistoryActivity extends Activity{
 				
 			}
 		});
-		//监听图像获取
-	    product_image.setOnClickListener(new OnClickListener() {  
+	    
+	    //图片按钮============================================w
+	    
+	    product_view.setOnClickListener(new OnClickListener() {  
 	    	  
 	        @Override  
 	        public void onClick(View v) {  
@@ -117,6 +134,7 @@ public class HistoryActivity extends Activity{
 //	        	intent.setType("image/*");   
 //	            intent.setAction(Intent.ACTION_GET_CONTENT);   
 //	        	startActivityForResult(intent, IMAGE_CODE);
+	        	fileName=getPhotopath();
 	        	Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
                 startActivityForResult(intent, IMAGE_CODE);
@@ -132,6 +150,7 @@ public class HistoryActivity extends Activity{
 	        }  
 	  
 	    });  
+	    
 		//监听提交按钮
 		product_submit.setOnClickListener(new OnClickListener() {
 			
@@ -156,6 +175,7 @@ public class HistoryActivity extends Activity{
 	/**
 	 * 图片处理
 	 */
+
 	@SuppressLint("NewApi")
 	@SuppressWarnings("finally")
 	@Override  
@@ -174,16 +194,25 @@ public class HistoryActivity extends Activity{
 	        try {  
 	  
 	            Uri originalUri = data.getData(); // 获得图片的uri  
-	  
+	            FileOutputStream out = new FileOutputStream(fileName);
+	            Log.i("image", "====="+fileName);
+	            //Uri uri_new = Uri.fromFile(out);
 	            bm = MediaStore.Images.Media.getBitmap(resolver, originalUri);  
-	  
-	            product_view.setImageBitmap(ThumbnailUtils.extractThumbnail(bm, 300, 300));  //使用系统的一个工具类，参数列表为 Bitmap Width,Height  这里使用压缩后显示，否则在华为手机上ImageView 没有显示  
+
+	            //
+	            product_view.setImageBitmap(ThumbnailUtils.extractThumbnail(bm, 300, 300));  
+	            //使用系统的一个工具类，参数列表为 Bitmap Width,Height  这里使用压缩后显示，否则在华为手机上ImageView 没有显示  
 	            // 显得到bitmap图片  
-	  
+	            Bitmap myBitmap = null;
  				if(originalUri != null){
- 					pic_path = getRealPathFromURI(originalUri);
+ 				    pic_path = getRealPathFromURI(originalUri);
+ 		            Bitmap bitmap = getSmallBitmap(pic_path);
+ 					bitmap.compress(Bitmap.CompressFormat.JPEG, 20, out);
+ 					out.flush();
+ 					out.close();
+ 					
+ 					
  					Toast.makeText(this, "获取图片成功，path="+pic_path, Toast.LENGTH_SHORT).show();
- 					//setImageView(realPath);
  				}else{
  					Log.e(tag, "从相册获取图片失败");
  				}
@@ -256,7 +285,8 @@ public class HistoryActivity extends Activity{
 			product.setPrice(productPrice);
 			product.setDescription(productDescription);
 			product.setArea(productArea);
-			product.setSalerId(Constants.userobject);		
+			product.setSalerId(Constants.userobject);
+			product.setStatus(1);//商品有效在展示
 			BmobQuery<Product> query = new BmobQuery<Product>();
 			query.findObjects(new FindListener<Product>() {
 				@Override
@@ -285,7 +315,7 @@ public class HistoryActivity extends Activity{
 		}
         else//有图片上传
         {
-        	final BmobFile file_image=new BmobFile(new File(pic_path));
+        	final BmobFile file_image=new BmobFile(new File(fileName));
 		    file_image.uploadblock(new UploadFileListener() {
 		    	Product product = new Product();
 				@Override
@@ -302,6 +332,7 @@ public class HistoryActivity extends Activity{
 					product.setArea(productArea);
 					product.setImage(file_image);
 					product.setSalerId(Constants.userobject);
+					product.setStatus(1);//商品有效在展示
 					product.save(new SaveListener<String>() {
                         @Override
                         public void done(String s, BmobException e) {
@@ -322,14 +353,7 @@ public class HistoryActivity extends Activity{
 	                    // 返回的上传进度（百分比）
 	                }
 			}); 
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-			
+		
 		//return true;
 		    isCompleted=true;
 		}
@@ -356,5 +380,116 @@ public class HistoryActivity extends Activity{
 		}
 		return true;
 	}
+	
+	 /**路径创建
+	  * 
+	  */
+	    private String getPhotopath() {
+	        // TODO Auto-generated method stub
+
+	        DateFormat df = new DateFormat();
+	        Log.i("image", "进入getPhotopath");
+
+	         String name = df.format("yyyyMMdd_hhmmss",
+	                Calendar.getInstance(Locale.CHINA))
+	                + ".png";
+	        String fileName = "/sdcard/kkImage/" + name;
+	        File file = new File("/sdcard/kkImage/");
+	        if(!file.exists()){
+	            Log.e("TAG","第一次创建文件夹");
+	            file.mkdirs();// 如果文件夹不存在，则创建文件夹  
+	        }
+
+	        return fileName;
+	    }
+	/**
+	 * 质量压缩方法
+	 * @param image
+	 * @return
+	 */
+//	 public static Bitmap compressImage(Bitmap image) {
+//		 
+//	       ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//	       image.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+//	       int options = 100;
+//	       while (baos.toByteArray().length / 1024 > 100) {  //循环判断如果压缩后图片是否大于100kb,大于继续压缩
+//	           baos.reset();//重置baos即清空baos
+//	           //第一个参数 ：图片格式 ，第二个参数： 图片质量，100为最高，0为最差  ，第三个参数：保存压缩后的数据的流
+//	           image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options%，把压缩后的数据存放到baos中
+//	           options -= 10;//每次都减少10
+//	       }
+//	       ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());//把压缩后的数据baos存放到ByteArrayInputStream中
+//	       Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);//把ByteArrayInputStream数据生成图片
+//	       return bitmap;
+//	   }
+	  /**
+	   * 根据路径获得图片并压缩，返回bitmap用于显示
+	   */ 
+	    public static Bitmap getSmallBitmap(String filePath) {
+	            final BitmapFactory.Options options = new BitmapFactory.Options();
+	            options.inJustDecodeBounds = true;//设置为ture,只读取图片的大小，不把它加载到内存中去
+	            BitmapFactory.decodeFile(filePath, options);
+
+	            // Calculate inSampleSize
+	        options.inSampleSize = calculateInSampleSize(options, 480, 800);//此处，选取了480x800分辨率的照片
+
+	            // Decode bitmap with inSampleSize set
+	        options.inJustDecodeBounds = false;//处理完后，同时需要记得设置为false
+
+	        return BitmapFactory.decodeFile(filePath, options);
+	        }
+	    public static int calculateInSampleSize(BitmapFactory.Options options,int reqWidth, int reqHeight) {
+	        final int height = options.outHeight;
+	        final int width = options.outWidth;
+	        int inSampleSize = 1;
+
+	        if (height > reqHeight || width > reqWidth) {
+	                 final int heightRatio = Math.round((float) height/ (float) reqHeight);
+	                 final int widthRatio = Math.round((float) width / (float) reqWidth);
+	                 inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+	        }
+	            return inSampleSize;
+	    }
+	    
+	    
+	    
+	    
+
+    /**
+     * 通过路径获取Bitmap对象
+     *
+     * @param path
+     * @return
+     */
+//    public static Bitmap getBitmap(String path) {
+//        Bitmap bm = null;
+//        InputStream is = null;
+//        try {
+//            File outFilePath = new File(path);
+//            //判断如果当前的文件不存在时，创建该文件一般不会不存在
+//            if (!outFilePath.exists()) {
+//                boolean flag = false;
+//                try {
+//                    flag = outFilePath.createNewFile();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                System.out.println("---创建文件结果----" + flag);
+//            }
+//            is = new FileInputStream(outFilePath);
+//            bm = BitmapFactory.decodeStream(is);
+//
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//            return null;
+//        } finally {
+//            try {
+//                is.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return bm;
+//    }
 	
 }
