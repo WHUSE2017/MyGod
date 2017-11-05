@@ -80,7 +80,7 @@ public class CategoryActivity extends BaseActivity {
 					@Override
 					public void onItemClick(AdapterView<?> adapterview, View view, int parent,
 							long id) {
-						Toast.makeText(CategoryActivity.this, "你点击了第"+id+"项", 1).show();
+//						Toast.makeText(CategoryActivity.this, "你点击了第"+id+"项", 1).show();
 						switch ((int)id) {
 						case 0:
 							Intent intent0=new Intent(CategoryActivity.this, HouseholdActivity.class);

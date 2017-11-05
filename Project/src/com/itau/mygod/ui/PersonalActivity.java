@@ -2,6 +2,8 @@ package com.itau.mygod.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -30,10 +32,12 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 	private LinearLayout Ly_login,Ly_Other;
 	private RelativeLayout Ly_personalInfo;
 	private RelativeLayout personalOrder;
+	private RelativeLayout personalAttention;
 	private RelativeLayout userSafety;
 	private TextView username;
 	private int LOGIN_CODE=100;
-
+	private int USER_SAFETY_CODE=50;
+	private Handler myHandler;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -41,6 +45,41 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 		setContentView(R.layout.activity_personal);
 		findViewById();
 		initView();
+		myHandler = new Handler()
+
+	       {
+
+	              //接收到消息后处理
+
+	              public void handleMessage(Message msg)
+
+	              {
+
+	                     switch (msg.what)
+
+	                     {
+
+	                     case ProductDetailActivity.REFRESH:
+
+	                    	 username.setText(Constants.userobject.getName());
+//	             			if(Ly_login.isShown()){
+//	             				Ly_personalInfo.setVisibility(View.VISIBLE);
+//	             				Ly_login.setVisibility(View.GONE);
+//	             				Ly_Other.setVisibility(View.GONE);
+//	             			}
+	             			Ly_personalInfo.setVisibility(View.VISIBLE);
+	             			Ly_login.setVisibility(View.GONE);
+	             			Ly_Other.setVisibility(View.GONE);  
+
+	                            break;
+
+	                     }
+
+	                     super.handleMessage(msg);
+
+	              }                  
+
+	       };
 	}
 
 	@Override
@@ -58,6 +97,7 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 		Ly_Other=(LinearLayout)findViewById(R.id.other_layout);
 		username=(TextView)findViewById(R.id.username);
 		personalOrder=(RelativeLayout)findViewById(R.id.personal_all_order);
+		personalAttention=(RelativeLayout)findViewById(R.id.personal_all_attention);
 		userSafety=(RelativeLayout)findViewById(R.id.user_safety);
 	}
 
@@ -70,7 +110,15 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 		//mMoreButton.setOnClickListener(this);
 		mExitButton.setOnClickListener(this);
 		personalOrder.setOnClickListener(this);
+		personalAttention.setOnClickListener(this);
 		userSafety.setOnClickListener(this);
+		if(Constants.status){
+			username.setText(Constants.userobject.getName());
+			Ly_personalInfo.setVisibility(View.VISIBLE);
+			Ly_login.setVisibility(View.GONE);
+			Ly_Other.setVisibility(View.GONE);
+		}
+			
 	}
 
 	@Override
@@ -94,11 +142,28 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 					startActivityForResult(mIntent, LOGIN_CODE);
 				}
 			break;
-			
 		case R.id.user_safety:
+			if(Constants.status){
 			mIntent=new Intent(PersonalActivity.this, UserSafetyActivity.class);
+			startActivityForResult(mIntent,USER_SAFETY_CODE);
+			}else{
+				DisplayToast("您还未登录，请先登录！");
+				mIntent=new Intent(PersonalActivity.this, LoginActivity.class);
+				
+				startActivityForResult(mIntent, LOGIN_CODE);
+			}
+			break;
 			
-			startActivityForResult(mIntent, LOGIN_CODE);
+		case R.id.personal_all_attention:
+			if(Constants.status){
+				mIntent=new Intent(PersonalActivity.this, AttentionActivity.class);
+				startActivity(mIntent);
+				}else{
+					DisplayToast("您还未登录，请先登录！");
+					mIntent=new Intent(PersonalActivity.this, LoginActivity.class);
+					
+					startActivityForResult(mIntent, LOGIN_CODE);
+				}
 			break;
 			
 		case R.id.personal_exit:
@@ -123,17 +188,25 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		
 		if(resultCode==20){
-			String name=data.getExtras().getString("username");
-			Log.i("name", name);
-			username.setText(name);
-			if(Ly_login.isShown()){
-				Ly_personalInfo.setVisibility(View.VISIBLE);
-				Ly_login.setVisibility(View.GONE);
-				Ly_Other.setVisibility(View.GONE);
-			}
+			username.setText(Constants.userobject.getName());
+//			if(Ly_login.isShown()){
+//				Ly_personalInfo.setVisibility(View.VISIBLE);
+//				Ly_login.setVisibility(View.GONE);
+//				Ly_Other.setVisibility(View.GONE);
+//			}
 			Ly_personalInfo.setVisibility(View.VISIBLE);
 			Ly_login.setVisibility(View.GONE);
 			Ly_Other.setVisibility(View.GONE);
+		}
+		if(resultCode==10){
+//			if(Ly_login.isShown()){
+//				Ly_personalInfo.setVisibility(View.VISIBLE);
+//				Ly_login.setVisibility(View.GONE);
+//				Ly_Other.setVisibility(View.GONE);
+//			}
+			Ly_personalInfo.setVisibility(View.GONE);
+			Ly_login.setVisibility(View.VISIBLE);
+			Ly_Other.setVisibility(View.VISIBLE);
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
@@ -145,8 +218,8 @@ public class PersonalActivity extends BaseActivity implements OnClickListener {
 			
 			switch (v.getId()) {
 			case R.id.btn_exit:
-				CommonTools.showShortToast(PersonalActivity.this, "退出程序");
-				
+				DisplayToast("退出程序");
+				finish();
 				break;
 			case R.id.btn_cancel:
 				PersonalActivity.this.dismissDialog(R.id.btn_cancel);

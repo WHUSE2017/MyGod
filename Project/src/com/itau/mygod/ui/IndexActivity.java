@@ -3,6 +3,7 @@ package com.itau.mygod.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Gallery;
 import android.widget.ImageButton;
@@ -30,12 +32,17 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 import com.itau.jingdong.R;
 import com.itau.mygod.adapter.IndexGalleryAdapter;
+import com.itau.mygod.adapter.ProductAdapter;
 import com.itau.mygod.bean.Constants;
 import com.itau.mygod.entity.IndexGalleryItemData;
 import com.itau.mygod.ui.base.BaseActivity;
+import com.itau.mygod.user.Product;
 import com.itau.mygod.utils.CommonTools;
 import com.itau.mygod.widgets.HomeSearchBarPopupWindow;
 import com.itau.mygod.widgets.HomeSearchBarPopupWindow.onSearchBarItemClickListener;
@@ -74,17 +81,19 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 
 	private Gallery mStormGallery = null;
 	private Gallery mPromotionGallery = null;
-	private IndexGalleryAdapter mStormAdapter = null;
-	private IndexGalleryAdapter mPromotionAdapter = null;
-	private List<IndexGalleryItemData> mStormListData = new ArrayList<IndexGalleryItemData>();
-	private List<IndexGalleryItemData> mPromotionListData = new ArrayList<IndexGalleryItemData>();
-	private IndexGalleryItemData mItemData = null;
+//	private IndexGalleryAdapter mStormAdapter = null;
+	private ProductAdapter mPromotionAdapter = null;
+//	private List<IndexGalleryItemData> mStormListData = new ArrayList<IndexGalleryItemData>();
+	private ArrayList<Product> mPromotionListData = new ArrayList<Product>();
+	private Product mItemData = null;
 	private HomeSearchBarPopupWindow mBarPopupWindow = null;
 	private EditText mSearchBox = null;
 	private ImageButton mCamerButton = null;
 	private LinearLayout mTopLayout = null;
 	private ImageButton mshake=null;
 	private ImageButton mHistoryBtn=null;
+	private ImageButton mCollectBtn=null;
+	private ImageButton mMessageBtn=null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +135,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 		mViewPager = (JazzyViewPager) findViewById(R.id.index_product_images_container);
 		mIndicator = (LinearLayout) findViewById(R.id.index_product_images_indicator);
 
-		mStormGallery = (Gallery) findViewById(R.id.index_jingqiu_gallery);
+//		mStormGallery = (Gallery) findViewById(R.id.index_jingqiu_gallery);
 		mPromotionGallery = (Gallery) findViewById(R.id.index_tehui_gallery);
 
 		mSearchBox = (EditText) findViewById(R.id.index_search_edit);
@@ -134,7 +143,8 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 		mTopLayout = (LinearLayout) findViewById(R.id.index_top_layout);
 		mshake=(ImageButton)findViewById(R.id.index_shake);
 		mHistoryBtn=(ImageButton)findViewById(R.id.index_history_btn);
-		
+		mCollectBtn=(ImageButton)findViewById(R.id.index_collect_btn);
+		mMessageBtn=(ImageButton)findViewById(R.id.index_message_btn);
 	}
 
 	
@@ -196,22 +206,21 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 		
 		// ======= 初始化ViewPager ========
 
-		mStormAdapter = new IndexGalleryAdapter(this,
-				R.layout.activity_index_gallery_item, mStormListData,
-				new int[] { R.id.index_gallery_item_image,
-						R.id.index_gallery_item_text });
+//		mStormAdapter = new IndexGalleryAdapter(this,
+//				R.layout.activity_index_gallery_item, mStormListData,
+//				new int[] { R.id.index_gallery_item_image,
+//						R.id.index_gallery_item_text });
 
-		mStormGallery.setAdapter(mStormAdapter);
+//		mStormGallery.setAdapter(mStormAdapter);
 
-		mPromotionAdapter = new IndexGalleryAdapter(this,
-				R.layout.activity_index_gallery_item, mPromotionListData,
-				new int[] { R.id.index_gallery_item_image,
-						R.id.index_gallery_item_text });
+//		mPromotionAdapter = new ProductAdapter(IndexActivity.this,
+//				R.layout.activity_index_gallery_item, mPromotionListData
+//				);
+//
+//		mPromotionGallery.setAdapter(mPromotionAdapter);
 
-		mPromotionGallery.setAdapter(mPromotionAdapter);
-
-		mStormGallery.setSelection(3);
-		mPromotionGallery.setSelection(3);
+//		mStormGallery.setSelection(3);
+//		mPromotionGallery.setSelection(mPromotionGallery.getCount()/2);
 
 		mBarPopupWindow = new HomeSearchBarPopupWindow(this,
 				LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -221,7 +230,8 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 		mSearchBox.setOnClickListener(this);
 		mshake.setOnClickListener(this);
 		mHistoryBtn.setOnClickListener(this);
-
+		mCollectBtn.setOnClickListener(this);
+		mMessageBtn.setOnClickListener(this);
 		mSearchBox.setInputType(InputType.TYPE_NULL);
 	}
 
@@ -249,90 +259,47 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 
 		mImageUrl = "drawable://" + R.drawable.image08;
 		mImageUrls.add(mImageUrl);
+		BmobQuery<Product> query = new BmobQuery<Product>();
+		query.order("updatedAt");
+		query.setLimit(10);
+		query.findObjects(new FindListener<Product>() {
+			@Override
+			public void done(List<Product> object, BmobException e) {
+				Log.i("debug","done");
+				if(object.size() != 0)
+				{
+					for(Product ct:object){
+						mPromotionListData.add(ct);
+					}
+				}	
+				Log.i("debug","setAdapte");
+				mPromotionGallery.setAdapter(new ProductAdapter(IndexActivity.this,R.layout.activity_index_gallery_item,mPromotionListData));
+				mPromotionGallery.setSelection(mPromotionGallery.getCount()/2);
+				mPromotionGallery.setOnItemClickListener(new OnItemClickListener() {	
+					@Override
+					public void onItemClick(AdapterView<?> adapterview, View view, int parent,
+							long id) {
+						//Toast.makeText(IndexProductActivity.this, "你点击了第"+id+"项", 1).show();
+						Bundle bundle=new Bundle();
+						mIntent=new Intent();
 
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(1);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_01);
-		mItemData.setPrice("￥79.00");
-		mStormListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(2);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_02);
-		mItemData.setPrice("￥89.00");
-		mStormListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(3);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_03);
-		mItemData.setPrice("￥99.00");
-		mStormListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(4);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_04);
-		mItemData.setPrice("￥109.00");
-		mStormListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(5);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_05);
-		mItemData.setPrice("￥119.00");
-		mStormListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(6);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_06);
-		mItemData.setPrice("￥129.00");
-		mStormListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(7);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_07);
-		mItemData.setPrice("￥139.00");
-		mStormListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(8);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_08);
-		mItemData.setPrice("￥69.00");
-		mPromotionListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(9);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_09);
-		mItemData.setPrice("￥99.00");
-		mPromotionListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(10);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_10);
-		mItemData.setPrice("￥109.00");
-		mPromotionListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(11);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_11);
-		mItemData.setPrice("￥119.00");
-		mPromotionListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(12);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_12);
-		mItemData.setPrice("￥129.00");
-		mPromotionListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(13);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_13);
-		mItemData.setPrice("￥139.00");
-		mPromotionListData.add(mItemData);
-
-		mItemData = new IndexGalleryItemData();
-		mItemData.setId(14);
-		mItemData.setImageUrl("drawable://" + R.drawable.index_gallery_14);
-		mItemData.setPrice("￥149.00");
-		mPromotionListData.add(mItemData);
+						bundle.putString("productTitle",mPromotionListData.get(Integer.parseInt(String.valueOf(id))).getTitle());
+						bundle.putString("productPrice",mPromotionListData.get(Integer.parseInt(String.valueOf(id))).getPrice());
+						bundle.putString("productContent",mPromotionListData.get(Integer.parseInt(String.valueOf(id))).getDescription());
+						bundle.putString("productArea",mPromotionListData.get(Integer.parseInt(String.valueOf(id))).getArea());
+						bundle.putString("productId",mPromotionListData.get(Integer.parseInt(String.valueOf(id))).getObjectId());
+						if(mPromotionListData.get(Integer.parseInt(String.valueOf(id))).getImage()==null)
+							bundle.putString("productImage","");
+						else
+							bundle.putString("productImage",mPromotionListData.get(Integer.parseInt(String.valueOf(id))).getImage().getUrl());
+						mIntent.putExtras(bundle);
+						mIntent.setClass(IndexActivity.this, ProductDetailActivity.class);
+						startActivity(mIntent);
+						
+					}
+				});
+			}			
+		});
 	}
 
 	
@@ -425,6 +392,11 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 			openActivity(SearchActivity.class);
 			break;
 			
+		case R.id.index_message_btn:
+			mIntent=new Intent(IndexActivity.this, MessageBoardActivity.class);
+			startActivity(mIntent);
+			break;
+			
 		case R.id.index_history_btn:
 			if (Constants.status) {
 				mIntent=new Intent(IndexActivity.this, HistoryActivity.class);
@@ -432,19 +404,11 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 				break;
 			}
 			else {
-<<<<<<< HEAD
 				Toast.makeText(getBaseContext(), "您还未登录，请先登录！", Toast.LENGTH_SHORT).show();
-=======
-				Toast.makeText(getBaseContext(), "请先登录！", Toast.LENGTH_SHORT).show();
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 				mIntent=new Intent(IndexActivity.this, LoginActivity.class);
 				startActivity(mIntent);
 				break;
 			}
-<<<<<<< HEAD
-=======
-
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 			
 		case R.id.index_shake:
 			try{
@@ -454,6 +418,18 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 			}catch(Exception e){
 				Log.i("错误",e.getMessage());
 			}
+			break;
+			
+		case R.id.index_collect_btn:
+			if(Constants.status){
+				mIntent=new Intent(IndexActivity.this, AttentionActivity.class);
+				startActivity(mIntent);
+				}else{
+					DisplayToast("您还未登录，请先登录！");
+					mIntent=new Intent(IndexActivity.this, LoginActivity.class);
+					
+					startActivityForResult(mIntent, 100);
+				}
 			break;
 
 		default:

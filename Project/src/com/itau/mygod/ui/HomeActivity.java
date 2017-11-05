@@ -129,7 +129,7 @@ public class HomeActivity extends TabActivity {
 
 		case R.id.menu_exit:
 
-			showAlertDialog("退出程序", "确定退出京东商城？", "确定", new OnClickListener() {
+			showAlertDialog("退出程序", "确定退出MyGod？", "确定", new OnClickListener() {
 
 				@Override
 				public void onClick(DialogInterface dialog, int which) {

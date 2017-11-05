@@ -17,141 +17,143 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dip"
             android:text="@string/register_in_normal"
-            android:textColor="#ffffff"
-            android:textSize="15.0dip" />
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="#ffffff" />
     </LinearLayout>
 
-   <LinearLayout
+   <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="40dp"
+        android:layout_marginTop="200dp"
+        android:layout_margin="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="35dp"
+
          >
         
        <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/name_lable"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/register_normal_useraccount"
+            android:textSize="@dimen/medium_text_size"
             android:textColor="@color/black" />
        
         <EditText 
             android:id="@+id/id_username"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:layout_marginLeft="35dp"
+            android:layout_width="200dp"
+            android:layout_toRightOf="@id/name_lable"
             android:hint="@string/register_normal_useraccount_hint"
             android:inputType="number"
-           android:background="@drawable/category_selection_gridview_bg"
             android:layout_gravity="center_vertical"
             />        
-    </LinearLayout>
-     <LinearLayout
+    </RelativeLayout>
+     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="40dp"
+        android:layout_margin="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
          >
         
        <TextView
-            android:layout_width="wrap_content"
+           android:id="@+id/phone_lable"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-<<<<<<< HEAD
             android:text="@string/register_normal_useraccount_userphone"
-=======
-            android:text="@string/normal_useraccount_userphone"
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
+            android:textSize="@dimen/medium_text_size"
             android:textColor="@color/black" />
        
         <EditText 
             android:id="@+id/id_userphone"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:layout_marginLeft="20dp"
-<<<<<<< HEAD
+            android:layout_width="200dp"
+            android:layout_toRightOf="@id/phone_lable"
             android:hint="@string/register_normal_useraccount_userphone_hint"
-=======
-            android:hint="@string/register_normal_useraccount_hint"
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
             android:inputType="number"
-           android:background="@drawable/category_selection_gridview_bg"
             android:layout_gravity="center_vertical"
             />
         
-    </LinearLayout>
+    </RelativeLayout>
     
    
       
     
-         <LinearLayout
+         <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="40dp"
+        android:layout_margin="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
          >
         
        <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/passwd1_lable"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/register_normal_password"
+            android:textSize="@dimen/medium_text_size"
             android:textColor="@color/black" />
        
         <EditText 
             android:id="@+id/id_password1"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:layout_marginLeft="35dp"
+            android:layout_width="200dp"
+            android:layout_toRightOf="@id/passwd1_lable"
             android:hint="@string/register_normal_password_hint"
             android:inputType="number"
-           android:background="@drawable/category_selection_gridview_bg"
             android:layout_gravity="center_vertical"
             />
         
-    </LinearLayout>
+    </RelativeLayout>
     
-            <LinearLayout
+            <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="40dp"
+        android:layout_margin="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
          >
         
        <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/passwd2_lable"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/register_normal_repassword"
+            android:textSize="@dimen/medium_text_size"
             android:textColor="@color/black" />
        
         <EditText 
             android:id="@+id/id_password2"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_width="200dp"
+            android:layout_toRightOf="@id/passwd2_lable"
             android:hint="@string/register_normal_repassword_hint"
             android:inputType="number"
-           android:background="@drawable/category_selection_gridview_bg"
             android:layout_gravity="center_vertical"
             />
         
-    </LinearLayout>
+    </RelativeLayout>
 
             
             <Button
                 android:id="@+id/normalregister"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/edit_product_num_cancle_normal"
+                android:background="@drawable/app_home_title_r_button_selector"
                 android:gravity="center"
                 android:text="注册"
-                android:textSize="16sp" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/medium_text_size" />
             
 </LinearLayout>

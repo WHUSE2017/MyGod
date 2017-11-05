@@ -14,6 +14,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,12 +36,14 @@ import cn.bmob.v3.listener.SaveListener;
 import com.itau.jingdong.R;
 import com.itau.mygod.bean.Constants;
 import com.itau.mygod.task.Callback;
+import com.itau.mygod.ui.ProductDetailActivity.GameThread;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.User;
 
 public class LoginActivity extends BaseActivity implements OnClickListener {
 	
 private static final String Tag="LoginActivity";
+public static final int LOGIN_REFRESH = 1;
 private LoginActivity loginActivity=null;
 	private ImageView loginLogo,login_more;
 	private EditText loginaccount,loginpassword;
@@ -50,7 +54,7 @@ private LoginActivity loginActivity=null;
 	private Intent mIntent;
 	private String serverAddress="http://mdemo.e-cology.cn/login.do";
 	public static String MOBILE_SERVERS_URL="http://mserver.e-cology.cn/servers.do";
-	
+	private Handler myHandler;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -60,6 +64,33 @@ private LoginActivity loginActivity=null;
 		loginActivity=LoginActivity.this;
 		findViewById();
 		initView();
+		myHandler = new Handler()
+
+	       {
+
+	              //接收到消息后处理
+
+	              public void handleMessage(Message msg)
+
+	              {
+
+	                     switch (msg.what)
+
+	                     {
+
+	                     case ProductDetailActivity.REFRESH:
+
+	                                    //刷新界面
+
+	                            break;
+
+	                     }
+
+	                     super.handleMessage(msg);
+
+	              }                  
+
+	       };
 	}
 	
 	@Override
@@ -272,9 +303,10 @@ private LoginActivity loginActivity=null;
 							Constants.status = true;
 							Constants.userobject = object.get(0);
 							Toast.makeText(getBaseContext(), "用户登陆成功！", Toast.LENGTH_LONG).show();
-							Intent intent = new Intent();   
-							intent.putExtra("username", Constants.userobject.getName()); //向父Activity发送数据  
-							setResult(20,intent);        
+							Intent intent = new Intent();  
+							intent.setAction(TAG);  
+							setResult(20,intent); 
+							sendBroadcast(intent);
 							finish();
 						}
 						else
@@ -295,6 +327,47 @@ private LoginActivity loginActivity=null;
 		}, true, getResources().getString(R.string.login_loading));
 	}	
 	}
+	class GameThread implements Runnable
+
+    {
+
+           public void run()
+
+           {
+
+                  while (!Thread.currentThread().isInterrupted())
+
+                  {
+
+                         Message message = new Message();
+
+                         message.what = LOGIN_REFRESH;
+
+                         //发送消息
+
+                         myHandler.sendMessage(message);
+
+                         try
+
+                         {
+
+                                Thread.sleep(100);
+
+                         }
+
+                         catch (InterruptedException e)
+
+                         {
+
+                                Thread.currentThread().interrupt();
+
+                         }
+
+                  }
+
+           }
+
+    }
 
 //	class LoginTask extends AsyncTask<String, Void, JSONObject>{
 //

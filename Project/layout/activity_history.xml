@@ -31,8 +31,10 @@
 
     <RelativeLayout
         android:id="@+id/history_mid1_layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="30dp"
         android:layout_below="@id/history_top_layout" >
         <TextView
@@ -58,8 +60,10 @@
     
     <RelativeLayout
         android:id="@+id/history_mid2_layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@id/history_mid1_layout">
         <TextView
             android:id="@+id/product_class_label"
@@ -78,12 +82,15 @@
             android:layout_marginLeft="10dp"
             android:id="@+id/product_class_spinner"
             android:entries="@array/category"
+            android:textSize="@dimen/medium_text_size"
           />
     </RelativeLayout>
      <RelativeLayout
         android:id="@+id/history_mid3_layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@id/history_mid2_layout">
         <TextView
             android:id="@+id/product_price_label"
@@ -108,8 +115,10 @@
     <!--交易地点-->
      <RelativeLayout
         android:id="@+id/history_mid4_layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@id/history_mid3_layout">
         <TextView
             android:id="@+id/product_area_label"
@@ -128,14 +137,17 @@
             android:layout_marginLeft="10dp"
             android:id="@+id/product_area_spinner"
             android:entries="@array/area"
+            android:textSize="@dimen/medium_text_size"
           />
     </RelativeLayout>
     
        <!--商品描述  -->
           <RelativeLayout
         android:id="@+id/history_mid5_layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_below="@id/history_mid4_layout">
         <TextView
             android:id="@+id/product_description_label"
@@ -159,39 +171,25 @@
     </RelativeLayout>
      
      <!--上传照片 -->
-      <RelativeLayout
+     <RelativeLayout
         android:id="@+id/history_mid6_layout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="100dp"
         android:layout_margin="10dp"
        
         android:layout_below="@id/history_mid5_layout">
 
-        <ImageButton
-            android:id="@+id/product_camer_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="5dp"
-            android:background="@drawable/app_home_title_r_button_selector"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:src="@drawable/android_search_button_icon" >
-            
-        </ImageButton>
-       
-      <ImageView  
+        <ImageView  
             android:id="@+id/set_pic"   
-            android:layout_below="@id/product_camer_button"
-            android:layout_width="wrap_content"  
-        	android:layout_height="wrap_content"  
+            android:layout_width="80dp"  
+        	android:layout_height="80dp"  
+        	android:layout_centerHorizontal="true"
         	android:layout_gravity="center" 
-        	android:layout_centerHorizontal="true" 
         	android:adjustViewBounds="true"  
-        	android:minHeight="50dp"  
-        	android:minWidth="50dp"  
+        	android:minHeight="40dp"  
+        	android:minWidth="40dp"  
             android:src="@drawable/product_pic" /> 
-         <!--    
         <TextView
             android:id="@+id/product_camera_label"
             android:layout_width="wrap_content"
@@ -199,9 +197,9 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/set_pic"
             android:text="@string/product_camera"
-            android:textColor="@color/black"
+            android:textColor="@color/gray"
             android:textSize="@dimen/medium_text_size" />
-           -->   
+  
 
     </RelativeLayout>
 
@@ -223,7 +221,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="提交"
-             android:textColor="@color/white"
+            android:textColor="@color/white"
             android:textSize="@dimen/medium_text_size"
              >
             

@@ -28,10 +28,7 @@ import com.itau.jingdong.R;
 import com.itau.mygod.adapter.ProductAdapter;
 import com.itau.mygod.bean.Constants;
 import com.itau.mygod.task.Callback;
-<<<<<<< HEAD
 import com.itau.mygod.ui.ProductDetailActivity;
-=======
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.Product;
 import com.itau.mygod.user.User;
@@ -39,10 +36,7 @@ import com.itau.mygod.user.User;
 public class FurnitureActivity extends Activity {
 	private ListView furniture_ListView;
 	private ArrayList<Product> data;
-<<<<<<< HEAD
 	private Intent mIntent;
-=======
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,7 +48,11 @@ public class FurnitureActivity extends Activity {
 	protected void findViewById() {
 		furniture_ListView=(ListView)this.findViewById(R.id.furniture_listview);
 		BmobQuery<Product> query = new BmobQuery<Product>();
-		query.order("type");
+<<<<<<< HEAD
+		query.include("salerId");
+=======
+>>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
+		query.order("-createdAt");
 		final ProgressDialog mPD;
 		mPD=ProgressDialog.show(FurnitureActivity.this, getTitle(), getResources().getString(R.string.category_loading), true, false);
 		query.findObjects(new FindListener<Product>() {
@@ -72,13 +70,12 @@ public class FurnitureActivity extends Activity {
 					}
 				}	
 				Log.i("debug","setAdapte");
-				furniture_ListView.setAdapter(new ProductAdapter(FurnitureActivity.this,data,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
+				furniture_ListView.setAdapter(new ProductAdapter(FurnitureActivity.this,R.layout.activity_product_item,data,getWindowManager().getDefaultDisplay().getWidth(),getWindowManager().getDefaultDisplay().getHeight()));
 				mPD.dismiss();
 				furniture_ListView.setOnItemClickListener(new OnItemClickListener() {	
 					@Override
 					public void onItemClick(AdapterView<?> adapterview, View view, int parent,
 							long id) {
-<<<<<<< HEAD
 						//Toast.makeText(IndexProductActivity.this, "你点击了第"+id+"项", 1).show();
 						Bundle bundle=new Bundle();
 						mIntent=new Intent();
@@ -88,6 +85,7 @@ public class FurnitureActivity extends Activity {
 						bundle.putString("productContent",data.get(Integer.parseInt(String.valueOf(id))).getDescription());
 						bundle.putString("productArea",data.get(Integer.parseInt(String.valueOf(id))).getArea());
 						bundle.putString("productId",data.get(Integer.parseInt(String.valueOf(id))).getObjectId());
+						bundle.putString("productSalerIdPhone", data.get(Integer.parseInt(String.valueOf(id))).getSalerId().getPhone());
 						if(data.get(Integer.parseInt(String.valueOf(id))).getImage()==null)
 							bundle.putString("productImage","");
 						else
@@ -95,9 +93,6 @@ public class FurnitureActivity extends Activity {
 						mIntent.putExtras(bundle);
 						mIntent.setClass(FurnitureActivity.this, ProductDetailActivity.class);
 						startActivity(mIntent);
-=======
-						Toast.makeText(FurnitureActivity.this, "你点击了第"+id+"项", 1).show();
->>>>>>> 2ece75666902f2fee68c8a88e1a30f81b751788a
 						
 					}
 				});

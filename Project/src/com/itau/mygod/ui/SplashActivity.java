@@ -3,11 +3,19 @@ package com.itau.mygod.ui;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import cn.bmob.push.BmobPush;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobInstallation;
+import cn.bmob.v3.BmobInstallationManager;
+import cn.bmob.v3.InstallationListener;
+import cn.bmob.v3.exception.BmobException;
+
+import cn.bmob.push.BmobPush;
 
 import com.itau.jingdong.R;
 import com.itau.mygod.config.Constants;
@@ -38,6 +46,31 @@ public class SplashActivity extends BaseActivity {
 		setContentView(R.layout.activity_splash);
 		
 		Bmob.initialize(this, "66071c2e737d3527b1de74f9d56b1812");       
+		
+		
+		// 使用推送服务时的初始化操作
+		BmobInstallationManager.getInstance().initialize(new InstallationListener<BmobInstallation>() {
+		            @Override
+		            public void done(BmobInstallation bmobInstallation, BmobException e) {
+		                if (e == null) {
+		                    //Logger.i(bmobInstallation.getObjectId() + "-" + bmobInstallation.getInstallationId());
+		                	Log.i("push", bmobInstallation.getObjectId() + "-" + bmobInstallation.getInstallationId());
+		                } else {
+		                    //Logger.e(e.getMessage());
+		                	Log.i("push", e.getMessage());
+		                }
+		            }
+		        });
+		// 启动推送服务
+		BmobPush.startWork(this);
+		
+	    // 使用推送服务时的初始化操作
+		
+		
+	//BmobInstallation.getCurrentInstallation(this).save();
+	    // 启动推送服务
+	    BmobPush.startWork(this);
+		
 		
 		
 		DisplayMetrics metrics = new DisplayMetrics();
