@@ -2,11 +2,6 @@ package com.itau.mygod.ui;
 
 import java.util.List;
 
-import com.itau.jingdong.R;
-import com.itau.mygod.bean.Constants;
-import com.itau.mygod.ui.base.BaseActivity;
-import com.itau.mygod.user.User;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +13,11 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
+
+import com.itau.mygod.R;
+import com.itau.mygod.bean.Constants;
+import com.itau.mygod.ui.base.BaseActivity;
+import com.itau.mygod.user.User;
 
 public class SetPhoneActivity extends BaseActivity implements OnClickListener{
 	private static final String Tag="SetPhoneActivity";

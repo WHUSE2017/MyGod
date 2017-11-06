@@ -1,22 +1,18 @@
 package com.itau.mygod.ui;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -25,96 +21,17 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.datatype.BmobPointer;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
-import android.widget.SimpleAdapter;
 
-import com.itau.mygod.widgets.IPopupItemClick;
-import com.itau.mygod.widgets.EditPopupWindow;
-import com.itau.mygod.ui.base.NewBaseActivity;
-import com.itau.jingdong.R;
-import com.itau.mygod.user.Attention;
-import com.itau.mygod.user.User;
-import com.itau.mygod.user.Product;
-import com.itau.mygod.user.Order;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.datatype.BmobPointer;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import android.widget.SimpleAdapter;
-
-import com.itau.mygod.widgets.IPopupItemClick;
-import com.itau.mygod.widgets.EditPopupWindow;
-import com.itau.mygod.ui.base.NewBaseActivity;
-import com.itau.jingdong.R;
-import com.itau.mygod.user.User;
-import com.itau.mygod.user.Product;
-import com.itau.mygod.user.Order;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.View.OnTouchListener;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.datatype.BmobPointer;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import android.widget.SimpleAdapter;
-
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.adapter.ProductAdapter;
 import com.itau.mygod.bean.Constants;
-import com.itau.mygod.user.User;
+import com.itau.mygod.ui.base.NewBaseActivity;
+import com.itau.mygod.user.Attention;
 import com.itau.mygod.user.Product;
-import com.itau.mygod.user.Order;
+import com.itau.mygod.widgets.EditPopupWindow;
 
 public class AttentionActivity extends NewBaseActivity implements OnClickListener,
 OnItemClickListener{
@@ -217,6 +134,7 @@ OnItemClickListener{
 	 				Log.i("debug",""+object.size());
 	 				for (Attention order : object)
 	 				{
+	 					if(order.getPId().getStatus()==1)
 	 					
 	 					datalist.add(order.getPId());		               
 	 		         }

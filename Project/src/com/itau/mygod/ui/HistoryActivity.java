@@ -1,21 +1,12 @@
 package com.itau.mygod.ui;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.security.PublicKey;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import javax.security.auth.Destroyable;
-
-import android.R.string;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -27,7 +18,6 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.Layout;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -36,25 +26,19 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.Toast;
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.bean.Constants;
-import com.itau.mygod.ui.IndexShakeActivity;
 import com.itau.mygod.user.Product;
-import com.itau.mygod.user.User;
-import com.itau.mygod.utils.BitmapCompressUtils;
 
 public class HistoryActivity extends Activity{
 	

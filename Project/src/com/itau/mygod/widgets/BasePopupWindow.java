@@ -1,12 +1,12 @@
 package com.itau.mygod.widgets;
 
-import com.itau.jingdong.R;
-
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.PopupWindow;
+
+import com.itau.mygod.R;
 
 
 public abstract class BasePopupWindow extends PopupWindow {

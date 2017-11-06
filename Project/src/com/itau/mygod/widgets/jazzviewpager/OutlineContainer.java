@@ -1,7 +1,5 @@
 package com.itau.mygod.widgets.jazzviewpager;
 
-import com.itau.jingdong.R;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -14,6 +12,8 @@ import android.util.TypedValue;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
+
+import com.itau.mygod.R;
 
 public class OutlineContainer extends FrameLayout implements Animatable {
 

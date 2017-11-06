@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,10 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.bean.Constants;
 import com.itau.mygod.ui.base.BaseActivity;
-import com.itau.mygod.utils.CommonTools;
 import com.itau.mygod.utils.ExitView;
 import com.itau.mygod.widgets.CustomScrollView;
 

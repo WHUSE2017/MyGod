@@ -12,7 +12,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.PopupWindow;
 
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 
 public class ExitView extends PopupWindow  {
 

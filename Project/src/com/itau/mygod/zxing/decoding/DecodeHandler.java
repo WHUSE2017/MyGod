@@ -30,7 +30,7 @@ import com.google.zxing.MultiFormatReader;
 import com.google.zxing.ReaderException;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.zxing.CaptureActivity;
 import com.itau.mygod.zxing.camera.CameraManager;
 import com.itau.mygod.zxing.camera.PlanarYUVLuminanceSource;

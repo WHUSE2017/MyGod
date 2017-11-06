@@ -15,9 +15,7 @@ import cn.bmob.v3.BmobInstallationManager;
 import cn.bmob.v3.InstallationListener;
 import cn.bmob.v3.exception.BmobException;
 
-import cn.bmob.push.BmobPush;
-
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.config.Constants;
 import com.itau.mygod.ui.base.BaseActivity;
 

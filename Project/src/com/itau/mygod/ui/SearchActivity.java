@@ -2,11 +2,8 @@ package com.itau.mygod.ui;
 
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Callable;
 
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -30,18 +27,13 @@ import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
-import com.itau.jingdong.R;
-import com.itau.mygod.bean.Constants;
+import com.itau.mygod.R;
 import com.itau.mygod.search.MyListView;
 import com.itau.mygod.search.RecordSQLiteOpenHelper;
 import com.itau.mygod.task.Callback;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.Product;
-import com.itau.mygod.user.User;
 
 public class SearchActivity extends BaseActivity {
 

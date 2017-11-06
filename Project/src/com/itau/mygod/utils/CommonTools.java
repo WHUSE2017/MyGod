@@ -3,17 +3,14 @@ package com.itau.mygod.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.itau.jingdong.R;
-
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.itau.mygod.R;
 
 
 public class CommonTools {

@@ -3,9 +3,7 @@ package com.itau.mygod.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,8 +18,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.Gallery;
 import android.widget.ImageButton;
@@ -29,26 +27,22 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 import android.widget.Toast;
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
-import com.itau.jingdong.R;
-import com.itau.mygod.adapter.IndexGalleryAdapter;
+import com.itau.mygod.R;
 import com.itau.mygod.adapter.ProductAdapter;
 import com.itau.mygod.bean.Constants;
-import com.itau.mygod.entity.IndexGalleryItemData;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.Product;
 import com.itau.mygod.utils.CommonTools;
 import com.itau.mygod.widgets.HomeSearchBarPopupWindow;
 import com.itau.mygod.widgets.HomeSearchBarPopupWindow.onSearchBarItemClickListener;
 import com.itau.mygod.widgets.jazzviewpager.JazzyViewPager;
-import com.itau.mygod.widgets.jazzviewpager.OutlineContainer;
 import com.itau.mygod.widgets.jazzviewpager.JazzyViewPager.TransitionEffect;
+import com.itau.mygod.widgets.jazzviewpager.OutlineContainer;
 import com.itau.mygod.zxing.CaptureActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -261,6 +255,7 @@ public class IndexActivity extends BaseActivity implements OnClickListener,
 		mImageUrls.add(mImageUrl);
 		BmobQuery<Product> query = new BmobQuery<Product>();
 		query.order("updatedAt");
+		query.addWhereEqualTo("status", 1);
 		query.setLimit(10);
 		query.findObjects(new FindListener<Product>() {
 			@Override

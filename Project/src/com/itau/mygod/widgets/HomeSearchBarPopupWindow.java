@@ -1,12 +1,12 @@
 package com.itau.mygod.widgets;
 
-import com.itau.jingdong.R;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+
+import com.itau.mygod.R;
 
 
 public class HomeSearchBarPopupWindow extends BasePopupWindow implements

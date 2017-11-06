@@ -1,26 +1,6 @@
-<<<<<<< HEAD
 package com.itau.mygod.ui;
-=======
-package com.itau.jingdong;
->>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.UpdateListener;
-
-import com.itau.mygod.ui.OrderActivity;
-import com.itau.mygod.ui.OrderDetailActivity;
-import com.itau.mygod.ui.ProductDetailActivity;
-import com.itau.mygod.user.Order;
-import com.itau.mygod.user.Product;
-import com.nostra13.universalimageloader.core.ImageLoader;
-<<<<<<< HEAD
-import com.itau.jingdong.R;
-=======
->>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -28,15 +8,22 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.UpdateListener;
+
+import com.itau.mygod.R;
+import com.itau.mygod.user.Order;
+import com.itau.mygod.user.Product;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class MyProductsActivity extends Activity implements OnClickListener{
 

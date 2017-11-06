@@ -1,7 +1,6 @@
 package com.itau.mygod.ui;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.TabActivity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -10,12 +9,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
-import android.widget.TabHost;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TabHost;
 
-import com.itau.jingdong.R;
 import com.itau.mygod.AppManager;
+import com.itau.mygod.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class HomeActivity extends TabActivity {

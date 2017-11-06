@@ -1,34 +1,22 @@
 package com.itau.mygod.ui;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.Callable;
 
-import android.app.ProgressDialog;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.adapter.ProductAdapter;
-import com.itau.mygod.bean.Constants;
-import com.itau.mygod.task.Callback;
-import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.Product;
 
 public class SearchResultActivity extends Activity{
@@ -59,6 +47,7 @@ public class SearchResultActivity extends Activity{
 		
 		BmobQuery<Product> query = new BmobQuery<Product>();
 		query.order("updatedAt");
+		query.addWhereEqualTo("status", 1);
 		query.setLimit(20);
 //		query.addWhereContains("title", productTitle);  //模糊查询title中包含关键字的商品
  		query.findObjects(new FindListener<Product>() 

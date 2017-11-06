@@ -15,7 +15,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.utils.ShakeListenerUtils;
 import com.itau.mygod.utils.ShakeListenerUtils.OnShakeListener;
 

@@ -29,7 +29,7 @@ import android.util.Log;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.zxing.CaptureActivity;
 import com.itau.mygod.zxing.camera.CameraManager;
 import com.itau.mygod.zxing.view.ViewfinderResultPointCallback;

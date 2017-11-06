@@ -6,8 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import com.itau.jingdong.R;
-import com.itau.mygod.widgets.IPopupItemClick;
+import com.itau.mygod.R;
 
 
 public class EditPopupWindow extends BasePopupWindow implements OnClickListener {

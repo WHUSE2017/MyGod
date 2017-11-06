@@ -1,18 +1,12 @@
 package com.itau.mygod.ui;
 
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.logging.Logger;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -27,16 +21,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.LogInListener;
-import cn.bmob.v3.listener.SaveListener;
 
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.bean.Constants;
 import com.itau.mygod.task.Callback;
-import com.itau.mygod.ui.ProductDetailActivity.GameThread;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.User;
 

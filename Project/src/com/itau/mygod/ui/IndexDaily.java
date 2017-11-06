@@ -3,7 +3,7 @@ package com.itau.mygod.ui;
 import android.os.Bundle;
 import android.view.Window;
 
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.ui.base.BaseActivity;
 
 public class IndexDaily extends BaseActivity {

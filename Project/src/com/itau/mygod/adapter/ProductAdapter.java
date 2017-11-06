@@ -3,7 +3,6 @@ package com.itau.mygod.adapter;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.content.Context;
 import android.util.Log;
@@ -15,9 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.user.Product;
-import com.itau.mygod.user.Category;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ProductAdapter extends BaseAdapter {

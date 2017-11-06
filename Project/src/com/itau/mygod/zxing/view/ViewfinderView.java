@@ -30,7 +30,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.google.zxing.ResultPoint;
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.zxing.camera.CameraManager;
 
 /**

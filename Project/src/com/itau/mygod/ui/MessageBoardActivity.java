@@ -1,58 +1,37 @@
 package com.itau.mygod.ui;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.itau.jingdong.R;
-import com.itau.mygod.bean.Constants;
-import com.itau.mygod.ui.base.BaseActivity;
-<<<<<<< HEAD
-import com.itau.mygod.user.Attention;
-import com.itau.mygod.user.Message;
-import com.itau.mygod.user.Product;
-import com.itau.mygod.user.User;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-=======
-import com.itau.mygod.user.Message;
-import com.itau.mygod.user.User;
-import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.content.Intent;
-import android.os.Bundle;
->>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
+
+import com.itau.mygod.R;
+import com.itau.mygod.bean.Constants;
+import com.itau.mygod.ui.base.BaseActivity;
+import com.itau.mygod.user.Message;
 
 @SuppressLint("SimpleDateFormat")
 public class MessageBoardActivity extends BaseActivity implements OnClickListener {
@@ -67,10 +46,7 @@ public class MessageBoardActivity extends BaseActivity implements OnClickListene
 	private Dialog dialog;
 	private EditText et_comment;
 	private Intent mIntent;
-<<<<<<< HEAD
 	private Handler myHandler;
-=======
->>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 	// private List<Message> list = new ArrayList<Message>();
 
 	@Override
@@ -82,18 +58,12 @@ public class MessageBoardActivity extends BaseActivity implements OnClickListene
 		datalist = new ArrayList<Map<String, Object>>();
 		listMessage = (ListView) findViewById(R.id.listMessage);
 
-<<<<<<< HEAD
 		final int[] to = { R.id.tvName, R.id.tvTime, R.id.message };
 		final String from[] = { "message_id", "updatedAt", "content" };
-=======
-		int[] to = { R.id.tvName, R.id.tvTime, R.id.message };
-		String from[] = { "message_id", "updatedAt", "content" };
->>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 
 		messageBoardActivity = MessageBoardActivity.this;
 		findViewById();
 		initView();
-<<<<<<< HEAD
 		initData();
 		adapter = new SimpleAdapter(this, datalist, R.layout.message_item, from, to);
 		listMessage.setAdapter(adapter);
@@ -124,10 +94,6 @@ public class MessageBoardActivity extends BaseActivity implements OnClickListene
 			}
 
 		};
-=======
-		adapter = new SimpleAdapter(this, getMesIn(), R.layout.message_item, from, to);
-		listMessage.setAdapter(adapter);
->>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 	}
 
 	/**
@@ -162,10 +128,7 @@ public class MessageBoardActivity extends BaseActivity implements OnClickListene
 		BmobQuery<Message> query = new BmobQuery<Message>();
 		// query.addWhereEqualTo("status", 1);
 		query.setLimit(50);
-<<<<<<< HEAD
 		datalist.clear();
-=======
->>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 		query.findObjects(new FindListener<Message>() {
 
 			@Override
@@ -206,6 +169,10 @@ public class MessageBoardActivity extends BaseActivity implements OnClickListene
 			break;
 		case R.id.Determine:
 				final String Msg = et_comment.getText().toString();
+				if (Msg.length() == 0) {
+					Toast.makeText(getBaseContext(), "留言不能为空", Toast.LENGTH_LONG).show();
+				}
+				else {
 				BmobQuery<Message> query = new BmobQuery<Message>();
 				query.setLimit(15);
 				query.findObjects(new FindListener<Message>() {
@@ -254,16 +221,12 @@ public class MessageBoardActivity extends BaseActivity implements OnClickListene
 													.show();
 											Intent intent = new Intent();
 											intent.putExtra("Msg", Constants.messageobject.getContent()); // 向父Activity发送数据
-<<<<<<< HEAD
 											new Thread(){  
 									            @Override  
 									            public void run() {//在run()方法实现业务逻辑；  
 									            	mHandler.sendEmptyMessage(1); 				  
 									            }  
 									        }.start();  
-=======
-
->>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 											setResult(20, intent);
 											finish();
 										}
@@ -282,6 +245,7 @@ public class MessageBoardActivity extends BaseActivity implements OnClickListene
 				
 			
 			break;
+				}
 		}
 
 	}
@@ -299,14 +263,11 @@ public class MessageBoardActivity extends BaseActivity implements OnClickListene
 		ivSend.setOnClickListener(this);
 
 	}
-<<<<<<< HEAD
 	
 	protected void initData() {
 		// TODO Auto-generated method stub
 		getMesIn();
 
 	}
-=======
->>>>>>> 9429a390b68d22361d6197942ee5439cc5b1552c
 
 }

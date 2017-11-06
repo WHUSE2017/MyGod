@@ -1,7 +1,6 @@
 package com.itau.mygod.adapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.user.Category;
 import com.nostra13.universalimageloader.core.ImageLoader;
 

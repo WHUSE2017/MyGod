@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.itau.jingdong.R;
+import com.itau.mygod.R;
 import com.itau.mygod.ui.base.BaseActivity;
 
 

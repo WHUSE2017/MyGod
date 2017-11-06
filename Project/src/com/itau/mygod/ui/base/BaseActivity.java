@@ -3,16 +3,6 @@ package com.itau.mygod.ui.base;
 import java.util.Locale;
 import java.util.concurrent.Callable;
 
-import com.itau.jingdong.R;
-import com.itau.mygod.AppManager;
-import com.itau.mygod.config.Constants;
-import com.itau.mygod.image.ImageLoaderConfig;
-import com.itau.mygod.task.AsyncCallable;
-import com.itau.mygod.task.Callback;
-import com.itau.mygod.task.EMobileTask;
-import com.itau.mygod.task.ProgressCallable;
-import com.nostra13.universalimageloader.core.ImageLoader;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -25,6 +15,16 @@ import android.telephony.TelephonyManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.itau.mygod.AppManager;
+import com.itau.mygod.R;
+import com.itau.mygod.config.Constants;
+import com.itau.mygod.image.ImageLoaderConfig;
+import com.itau.mygod.task.AsyncCallable;
+import com.itau.mygod.task.Callback;
+import com.itau.mygod.task.EMobileTask;
+import com.itau.mygod.task.ProgressCallable;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public abstract class BaseActivity extends Activity {
 
