@@ -2,6 +2,14 @@ package com.itau.mygod.ui;
 
 
 import java.util.List;
+<<<<<<< HEAD
+=======
+
+import com.itau.jingdong.R;
+import com.itau.mygod.bean.Constants;
+import com.itau.mygod.ui.base.BaseActivity;
+import com.itau.mygod.user.Message;
+>>>>>>> ab126c9e372c2adb1107ef3aae6dfc554fbda954
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +22,14 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
+<<<<<<< HEAD
 
 import com.itau.mygod.R;
 import com.itau.mygod.bean.Constants;
 import com.itau.mygod.ui.base.BaseActivity;
 import com.itau.mygod.user.Message;
+=======
+>>>>>>> ab126c9e372c2adb1107ef3aae6dfc554fbda954
 
 public class UserSafetyActivity extends BaseActivity implements OnClickListener {
 	private static final String Tag="UserSafetyActivity";

@@ -5,11 +5,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
+=======
+import com.itau.jingdong.R;
+import com.itau.mygod.bean.Constants;
+import com.itau.mygod.ui.base.BaseActivity;
+import com.itau.mygod.user.Attention;
+import com.itau.mygod.user.Message;
+import com.itau.mygod.user.Product;
+import com.itau.mygod.user.User;
+
+>>>>>>> ab126c9e372c2adb1107ef3aae6dfc554fbda954
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+<<<<<<< HEAD
+=======
+import android.util.Log;
+>>>>>>> ab126c9e372c2adb1107ef3aae6dfc554fbda954
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"  
         android:orientation="horizontal"  
         android:padding="10dp"  
-        android:background="#ff5a54">  
+        android:background="@drawable/android_title_bg">  
        
         <TextView  
             android:layout_width="0dp"  
@@ -20,11 +20,11 @@
             android:layout_weight="1"  
             android:gravity="center"  
             android:text="账户安全"  
-            android:textStyle="bold"  
+             
             android:textSize="20sp"  
             android:textColor="@android:color/white"/>  
        
-    </LinearLayout>  
+    </LinearLayout> 
     
     
     
@@ -38,7 +38,10 @@
         <!-- 无圆角-->
        <LinearLayout style="@style/mid_layout" android:id="@+id/setting_account_info">
             <TextView style="@style/usertext" android:text="我的账号" />
-          	<ImageView style="@style/img_arrow"/>
+            <TextView style="@style/usertext"
+                android:layout_marginLeft="50dp" 
+                android:id="@+id/user_info_name"
+                android:text="useraccount" />          	
         </LinearLayout>
         
        <!-- 分割线 -->
@@ -56,6 +59,14 @@
           
         <LinearLayout style="@style/top_layout" android:id="@+id/setting_modify_phone">
             <TextView style="@style/usertext" android:text="修改手机号" />
+          	<ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+        
+        <!-- 分割线 -->
+          <View style="@style/bg_line"/>
+        
+        <LinearLayout style="@style/top_layout" android:id="@+id/delete_message">
+            <TextView style="@style/usertext" android:text="删除留言" />
           	<ImageView style="@style/img_arrow"/>
         </LinearLayout>
         
