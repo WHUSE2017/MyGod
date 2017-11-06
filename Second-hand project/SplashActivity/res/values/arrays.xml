@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="category">
+        <item>家电</item>
+        <item>图书</item>
+        <item>衣服</item>
+        <item>笔记本</item>
+        <item>数码</item>
+        <item>家具</item>
+        <item>手机</item>
+        <item>护肤</item>
+    </string-array>
+            <string-array name="area">
+        <item>信息学部</item>
+        <item>文理学部</item>
+        <item>医学部</item>
+        <item>工学部</item>
+        <item>其它</item>
+    </string-array>
+</resources>

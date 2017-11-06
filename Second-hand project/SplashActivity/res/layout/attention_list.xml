@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tva_title"
+        android:layout_width="match_parent"
+        style="@style/Smile.TextView._Black" 
+        android:singleLine="true"
+        >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tva_describe"
+        android:layout_marginTop="10dp"
+        style="@style/Smile.TextView._Gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tva_title" 
+        android:minLines="1"
+        android:maxLines="2"
+        android:textSize="16sp"
+        >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tva_area"
+        android:layout_marginTop="10dp"
+        style="@style/Smile.TextView._Gray"
+        android:textSize="12sp"
+        android:layout_below="@id/tva_describe" >
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/tva_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_describe"
+        android:layout_alignRight="@+id/tv_title"
+        android:textSize="20sp"/>
+
+</RelativeLayout>

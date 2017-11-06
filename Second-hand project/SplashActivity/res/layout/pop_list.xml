@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/layout_mypro"
+        style="@style/Smile.TextView._Black"
+        android:layout_width="match_parent"
+        android:background="#eeeeee"
+        android:padding = "10dp"
+        android:gravity="center"
+        android:text="我的架上商品" />
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee" >
+    </View>
+    
+    <Button
+        android:id="@+id/layout_going_buy"
+        style="@style/Smile.TextView._Black"
+        android:layout_width="match_parent"
+        android:background="#eeeeee"
+        android:padding = "10dp"
+        android:gravity="center"
+        android:text="我的订购单" />
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee" >
+    </View>
+    <Button
+        android:id="@+id/layout_going_sale"
+        style="@style/Smile.TextView._Black"
+        android:layout_width="match_parent"
+        android:background="#eeeeee"
+        android:padding = "10dp"
+        android:gravity="center"
+        android:text="待处理订单" />
+        <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee" >
+    </View>
+    <Button
+        android:id="@+id/layout_buy"
+        style="@style/Smile.TextView._Black"
+        android:layout_width="match_parent"
+        android:background="#eeeeee"
+        android:padding = "10dp"
+        android:gravity="center"
+        android:text="我已买到" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee" >
+    </View>
+
+    <Button
+        android:id="@+id/layout_sale"
+        style="@style/Smile.TextView._Black"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:background="#eeeeee"
+        android:gravity="center"
+        android:text="我已卖出" />
+
+</LinearLayout>
