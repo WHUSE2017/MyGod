@@ -207,31 +207,6 @@ public class ProductDetailActivity extends Activity implements OnClickListener {
 								@Override
 								public void onClick(DialogInterface dialog,
 										int which) {// 确定按钮的响应事件
-
-									/**
-									 * 这里要查询User表中的电话号码
-									 * 
-									 * Product product=new Product();
-									 * 
-									 * BmobQuery<Product> query=new
-									 * BmobQuery<Product>();
-									 * query.addWhereEqualTo
-									 * ("title",productTitle);
-									 * query.include("salerId");
-									 * query.findObjects(this,new
-									 * FindListener<Product>(){
-									 * 
-									 * public void onSuccess(List<Product>
-									 * object){ User
-									 * user=BmobUser.getCurrentUser(this,
-									 * User.class);
-									 * product.getSalerId.getPhone(); } public
-									 * void onError(int code, String msg){
-									 * Toast.makeText(getBaseContext(), "查询失败",
-									 * Toast.LENGTH_SHORT).show(); }
-									 * 
-									 * });
-									 */
 									Order order = new Order();
 									order.setTitle(productTitle);
 									order.setPrice(productPrice);
@@ -257,6 +232,22 @@ public class ProductDetailActivity extends Activity implements OnClickListener {
 										}
 									});
 
+						        	 Product productUpdate=new Product();
+						        	 productUpdate.setStatus(2);
+						        	 productUpdate.update(productId, new UpdateListener() {
+										
+										@Override
+										public void done(BmobException e) {
+											// TODO Auto-generated method stub
+						        	         if(e==null){
+					       	                   Log.i("bmob","product 状态更新成功");
+					       	                 }else{
+					       	                   Log.i("bmob","product 状态更新失败"+e.getMessage()+","+e.getErrorCode());
+					       	                 }
+										}
+									});
+									
+									
 									// 跳转到订单页
 									startActivity(new Intent(
 											ProductDetailActivity.this,
