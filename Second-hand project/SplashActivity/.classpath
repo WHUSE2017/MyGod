@@ -4,8 +4,6 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="lib" path="libs/nineoldandroids.jar"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
 	<classpathentry kind="lib" path="libs/BmobSDK_3.5.8_20171013.jar"/>
 	<classpathentry kind="lib" path="libs/gson-2.6.2.jar"/>
@@ -15,5 +13,7 @@
 	<classpathentry kind="lib" path="libs/rxjava-1.1.6.jar"/>
 	<classpathentry kind="lib" path="libs/universal-image-loader-1.8.6-with-sources.jar"/>
 	<classpathentry kind="lib" path="libs/zxing.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
